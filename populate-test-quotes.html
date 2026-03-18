@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Populate Test Quotes</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+    .status {
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+      display: none;
+    }
+    .status.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+      display: block;
+    }
+    .status.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+      display: block;
+    }
+    .status.info {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+      display: block;
+    }
+    .quote-list {
+      margin-top: 20px;
+    }
+    .quote-item {
+      padding: 10px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .quote-item:last-child {
+      border-bottom: none;
+    }
+    .quote-name {
+      font-weight: 600;
+    }
+    .quote-meta {
+      color: #666;
+      font-size: 14px;
+    }
+    .badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge.calculated {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .badge.draft {
+      background: #f3f4f6;
+      color: #374151;
+    }
+    .badge.approved {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    pre {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗂️ GL Rater - Test Data Manager</h1>
+
+    <p>This utility helps you populate test quotes in your browser's localStorage for the GL Rater application.</p>
+
+    <div class="button-group">
+      <button class="btn-primary" onclick="populateTestData()">
+        📝 Add Test Quotes
+      </button>
+      <button class="btn-secondary" onclick="viewCurrentData()">
+        👁️ View Current Quotes
+      </button>
+      <button class="btn-danger" onclick="clearAllQuotes()">
+        🗑️ Clear All Quotes
+      </button>
+    </div>
+
+    <div id="status" class="status"></div>
+    <div id="quote-list" class="quote-list"></div>
+
+    <script>
+      const TEST_QUOTES = [
+        {
+          quote_id: "quote-test-001",
+          insured_name: "ABC Construction Co.",
+          status: "calculated",
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          pl2_selection: "Contractors",
+          territory: "CA-01",
+          technical_premium: 12362.50,
+          input_data: {
+            policy_details: {
+              insured_name: "ABC Construction Co.",
+              deal_number: "Txn9163632",
+              pl2_selection: "Contractors",
+              territory: "CA-01",
+              effective_date: "2026-03-03",
+              expiration_date: "2027-03-03",
+              occurrence_limit: 1000000,
+              aggregate_limit: 2000000,
+              sir_type: "SIR",
+              sir_amount: 2500,
+              commission: 0.15,
+              new_renewal_sales: 8000000,
+              expiring_sales: 7500000
+            },
+            class_codes: [
+              {
+                code: "10026",
+                description: "Commercial Construction",
+                location: "001",
+                exposure: 5000000,
+                rate: 1.25
+              },
+              {
+                code: "10033",
+                description: "Residential Construction",
+                location: "002",
+                exposure: 3000000,
+                rate: 1.50
+              }
+            ],
+            experience_modifier: {
+              evaluation_date: "2024-01-01",
+              modifier_value: 1.15,
+              losses: [
+                {
+                  date: "2023-06-15",
+                  indemnity: 25000,
+                  expense: 5000
+                },
+                {
+                  date: "2022-11-20",
+                  indemnity: 15000,
+                  expense: 3000
+                }
+              ]
+            },
+            uw_notes: "Primary contractor for commercial and residential projects in California."
+          }
+        },
+        {
+          quote_id: "quote-test-002",
+          insured_name: "XYZ Restaurant Group",
+          status: "draft",
+          created_at: new Date(Date.now() - 86400000).toISOString(),
+          updated_at: new Date(Date.now() - 86400000).toISOString(),
+          pl2_selection: "General Liability",
+          territory: "NY-02",
+          technical_premium: 8500,
+          input_data: {
+            policy_details: {
+              insured_name: "XYZ Restaurant Group",
+              pl2_selection: "General Liability",
+              territory: "NY-02"
+            },
+            class_codes: [],
+            experience_modifier: {},
+            uw_notes: ""
+          }
+        },
+        {
+          quote_id: "quote-test-003",
+          insured_name: "Tech Solutions Inc.",
+          status: "approved",
+          created_at: new Date(Date.now() - 172800000).toISOString(),
+          updated_at: new Date(Date.now() - 172800000).toISOString(),
+          pl2_selection: "Products Liability - Occurrence",
+          territory: "TX-03",
+          technical_premium: 15750,
+          input_data: {
+            policy_details: {
+              insured_name: "Tech Solutions Inc.",
+              pl2_selection: "Products Liability - Occurrence",
+              territory: "TX-03"
+            },
+            class_codes: [],
+            experience_modifier: {},
+            uw_notes: ""
+          }
+        }
+      ];
+
+      function populateTestData() {
+        try {
+          // Get existing quotes
+          const existingData = localStorage.getItem('gl_rater_quotes');
+          const existingQuotes = existingData ? JSON.parse(existingData) : [];
+
+          // Merge with new test quotes (avoid duplicates)
+          const existingIds = new Set(existingQuotes.map(q => q.quote_id));
+          const newQuotes = TEST_QUOTES.filter(q => !existingIds.has(q.quote_id));
+          const allQuotes = [...existingQuotes, ...newQuotes];
+
+          // Save to localStorage
+          localStorage.setItem('gl_rater_quotes', JSON.stringify(allQuotes));
+
+          showStatus('success', `✅ Added ${newQuotes.length} new test quotes! Total quotes: ${allQuotes.length}`);
+          viewCurrentData();
+        } catch (error) {
+          showStatus('error', `❌ Error: ${error.message}`);
+        }
+      }
+
+      function viewCurrentData() {
+        try {
+          const data = localStorage.getItem('gl_rater_quotes');
+          const quotes = data ? JSON.parse(data) : [];
+
+          if (quotes.length === 0) {
+            showStatus('info', 'ℹ️ No quotes found in localStorage');
+            document.getElementById('quote-list').innerHTML = '';
+            return;
+          }
+
+          let html = `<h3>Current Quotes (${quotes.length})</h3>`;
+          quotes.forEach(quote => {
+            html += `
+              <div class="quote-item">
+                <div>
+                  <div class="quote-name">${quote.insured_name}</div>
+                  <div class="quote-meta">
+                    ID: ${quote.quote_id} |
+                    PL2: ${quote.pl2_selection || 'N/A'} |
+                    Territory: ${quote.territory || 'N/A'}
+                    ${quote.technical_premium ? ` | Premium: $${quote.technical_premium.toLocaleString()}` : ''}
+                  </div>
+                </div>
+                <span class="badge ${quote.status}">${quote.status}</span>
+              </div>
+            `;
+          });
+
+          document.getElementById('quote-list').innerHTML = html;
+          showStatus('info', `ℹ️ Found ${quotes.length} quotes in localStorage`);
+        } catch (error) {
+          showStatus('error', `❌ Error reading quotes: ${error.message}`);
+        }
+      }
+
+      function clearAllQuotes() {
+        if (confirm('Are you sure you want to clear all quotes? This cannot be undone.')) {
+          localStorage.removeItem('gl_rater_quotes');
+          localStorage.removeItem('gl_rater_quote_counter');
+          showStatus('success', '✅ All quotes cleared successfully');
+          document.getElementById('quote-list').innerHTML = '';
+        }
+      }
+
+      function showStatus(type, message) {
+        const statusEl = document.getElementById('status');
+        statusEl.className = `status ${type}`;
+        statusEl.textContent = message;
+      }
+
+      // Load current data on page load
+      window.onload = viewCurrentData;
+    </script>
+
+    <hr style="margin: 30px 0;">
+
+    <div style="color: #666; font-size: 14px;">
+      <p><strong>Instructions:</strong></p>
+      <ol>
+        <li>Open this file in the same browser where you use the GL Rater app</li>
+        <li>Click "Add Test Quotes" to populate sample data</li>
+        <li>Navigate to <a href="http://localhost:3000/rating/history" target="_blank">http://localhost:3000/rating/history</a> to see the quotes</li>
+        <li>Use "Clear All Quotes" to reset if needed</li>
+      </ol>
+      <p><strong>Note:</strong> The data is stored in your browser's localStorage and will persist until cleared.</p>
+    </div>
+  </div>
+</body>
+</html>

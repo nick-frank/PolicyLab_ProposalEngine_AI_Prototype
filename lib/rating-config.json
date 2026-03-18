@@ -1,0 +1,134 @@
+{
+  "policyDetails": {
+    "defaults": {
+      "pl2": "Other",
+      "policyStatus": {
+        "new": "New / Renewal",
+        "expiring": "Expiring"
+      },
+      "territory": "None",
+      "occurrenceLimit": {
+        "new": 1000000,
+        "expiring": 1000000
+      },
+      "aggregateLimit": {
+        "new": 2000000,
+        "expiring": 2000000
+      },
+      "sirType": {
+        "new": "Deductible",
+        "expiring": "Deductible"
+      },
+      "sirAmount": {
+        "new": 5000,
+        "expiring": 5000
+      },
+      "commission": {
+        "new": 0.175,
+        "expiring": 0.175
+      },
+      "sales": {
+        "new": null,
+        "expiring": null
+      }
+    }
+  },
+  "dropdownOptions": {
+    "pl2": [
+      "Contractors",
+      "General Liability",
+      "Products Liability - Occurrence",
+      "Other"
+    ],
+    "sirType": [
+      "SIR",
+      "Deductible"
+    ],
+    "subline": [
+      "Prem/Ops",
+      "Liquor Liability"
+    ],
+    "liquorLiabilityLimit": [
+      "100K/100K",
+      "300K/300K",
+      "500K/500K",
+      "1M/1M",
+      "1M/2M"
+    ],
+    "dominantClassIndicator": [
+      "Prem/Ops Dominant Class",
+      "Liquor Liability Dominant Class"
+    ],
+    "exposureBase": [
+      "Gross Sales/Revenues",
+      "Payroll",
+      "Square Feet",
+      "Acres",
+      "Units",
+      "Admissions",
+      "Gallons",
+      "Members",
+      "Miles",
+      "Students",
+      "Total Cost",
+      "Total Operating Expenditures"
+    ]
+  },
+  "tableDefaults": {
+    "classRows": 20,
+    "lossRows": 50,
+    "defaultZipCode": null,
+    "defaultExposures": null,
+    "defaultPriorYearExposures": null
+  },
+  "formatting": {
+    "currency": {
+      "locale": "en-US",
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 0
+    },
+    "percentage": {
+      "minimumFractionDigits": 1,
+      "maximumFractionDigits": 1
+    },
+    "colors": {
+      "inputBackground": "#FFF4F2EB",
+      "calculatedBackground": "#FFFFFF",
+      "errorText": "#EF4444"
+    }
+  },
+  "validation": {
+    "messages": {
+      "enterSubline": "Enter Subline",
+      "enterLocationNumber": "Enter Location Number",
+      "yearNotConsistent": "***Year entered not consistent with losses entered"
+    },
+    "limits": {
+      "maxIndemnity": 100000,
+      "maxSingleLoss": null
+    }
+  },
+  "columnHeaders": {
+    "dynamic": {
+      "premOpsRate": {
+        "default": "PremOps Rate",
+        "generalLiability": "PremOps / Liquor Rate"
+      },
+      "premOpsPrem": {
+        "default": "PremOps Prem",
+        "generalLiability": "PremOps / Liquor Prem"
+      }
+    }
+  },
+  "conditionalFields": {
+    "generalLiabilityOnly": [
+      "locationNumber",
+      "subline",
+      "dominantClassIndicator",
+      "liquorLiabilityLimit"
+    ],
+    "liquorLiabilityOnly": [
+      "liquorLiabilityLimit"
+    ]
+  }
+}
