@@ -5,13 +5,20 @@ Main FastAPI application for round-trip rating system
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.sessions import SessionMiddleware
 from contextlib import asynccontextmanager
 import os
 from pathlib import Path
 
 from api import quotes, comparison, validation, workflow
 from core.config import settings
-from core.database import init_db
+from core.database import init_db, engine
+from core.users import (
+    fastapi_users, jwt_backend, cookie_backend,
+    UserRead, UserCreate, UserUpdate,
+)
+from core.admin import setup_admin
+from core.init_users import create_first_superuser
 
 # Create quotes storage directories
 QUOTES_DIR = Path(settings.QUOTES_STORAGE_PATH)
@@ -27,6 +34,7 @@ async def lifespan(app: FastAPI):
     # Startup
     print("Starting GL Primary Rater Backend...")
     await init_db()
+    await create_first_superuser()
 
     yield
 
@@ -41,7 +49,14 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Configure CORS
+# ---------------------------------------------------------------------------
+# Middleware (order matters — outermost first)
+# ---------------------------------------------------------------------------
+
+# Session middleware (required by SQLAdmin)
+app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
+
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
@@ -50,11 +65,59 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
+# ---------------------------------------------------------------------------
+# Auth routers (FastAPI-Users)
+# ---------------------------------------------------------------------------
+
+app.include_router(
+    fastapi_users.get_auth_router(jwt_backend),
+    prefix="/auth/jwt",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_auth_router(cookie_backend),
+    prefix="/auth/cookie",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_register_router(UserRead, UserCreate),
+    prefix="/auth",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_reset_password_router(),
+    prefix="/auth",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_verify_router(UserRead),
+    prefix="/auth",
+    tags=["auth"],
+)
+app.include_router(
+    fastapi_users.get_users_router(UserRead, UserUpdate),
+    prefix="/users",
+    tags=["users"],
+)
+
+# ---------------------------------------------------------------------------
+# Business routers
+# ---------------------------------------------------------------------------
+
 app.include_router(quotes.router, prefix="/api/quotes", tags=["quotes"])
 app.include_router(comparison.router, prefix="/api/comparison", tags=["comparison"])
 app.include_router(validation.router, prefix="/api/validation", tags=["validation"])
 app.include_router(workflow.router, prefix="/api/workflow", tags=["workflow"])
+
+# ---------------------------------------------------------------------------
+# SQLAdmin
+# ---------------------------------------------------------------------------
+
+admin_instance = setup_admin(app, engine)
+
+# ---------------------------------------------------------------------------
+# Root / health
+# ---------------------------------------------------------------------------
 
 @app.get("/")
 async def root():

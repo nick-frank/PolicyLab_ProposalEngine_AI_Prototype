@@ -3,11 +3,30 @@ SQLAlchemy models for database
 """
 
 from sqlalchemy import Column, String, Float, DateTime, JSON, Text, Enum, ForeignKey, Integer
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from datetime import datetime
 import enum
 
+from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTableUUID
+
 from .database import Base
+
+
+class User(SQLAlchemyBaseUserTableUUID, Base):
+    """
+    User model for authentication.
+    Inherits from FastAPI-Users mixin which provides:
+      - id (UUID, PK)
+      - email (String, unique, indexed)
+      - hashed_password (String)
+      - is_active (Boolean, default True)
+      - is_superuser (Boolean, default False)
+      - is_verified (Boolean, default False)
+    """
+    __tablename__ = "user"
+
+    full_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    role: Mapped[str] = mapped_column(String(50), default="viewer")
 
 class QuoteStatus(str, enum.Enum):
     DRAFT = "draft"

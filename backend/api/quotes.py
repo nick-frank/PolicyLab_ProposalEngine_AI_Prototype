@@ -12,8 +12,9 @@ from pathlib import Path
 from datetime import datetime
 
 from core.database import get_db
-from core.models import Quote as QuoteModel, QuoteStatus, AuditLog
+from core.models import Quote as QuoteModel, QuoteStatus, AuditLog, User
 from core.schemas import QuoteInput, QuoteOutput, QuoteResponse, ValidationResult
+from core.users import current_user_optional
 from excel.processor import ExcelProcessor
 from storage.quote_manager import QuoteManager
 from validation.validator import IntelligentValidator
@@ -28,7 +29,8 @@ validator = IntelligentValidator()
 @router.post("/new", response_model=dict)
 async def create_quote(
     quote_input: QuoteInput,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db),
+    user: Optional[User] = Depends(current_user_optional),
 ):
     """Create and process a new quote"""
     try:
@@ -50,6 +52,7 @@ async def create_quote(
         # Save to database
         quote_model = QuoteModel(
             id=result["quote_id"],
+            created_by=user.email if user else None,
             insured_name=quote_input.exposure_rating.policy_details.insured,
             deal_number=quote_input.exposure_rating.policy_details.deal_number,
             pl2_selection=quote_input.exposure_rating.policy_details.pl2.value,
