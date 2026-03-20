@@ -17,7 +17,13 @@ async def test_all_tables_coexist(setup_database):
         tables = await conn.run_sync(
             lambda c: inspect(c).get_table_names()
         )
-    for name in ("user", "quotes", "audit_logs", "approvals"):
+    expected_tables = (
+        "user", "quotes", "audit_logs", "approvals",
+        "submissions", "proposals", "proposal_rates", "proposal_forms",
+        "documents", "structured_fields", "loss_runs",
+        "submission_notes", "proposal_notes", "status_events",
+    )
+    for name in expected_tables:
         assert name in tables, f"Missing table: {name}"
 
 

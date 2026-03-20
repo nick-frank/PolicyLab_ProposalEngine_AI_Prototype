@@ -19,6 +19,7 @@ from core.users import (
 )
 from core.admin import setup_admin
 from core.init_users import create_first_superuser
+from core.init_seed_data import seed_demo_data
 
 # Create quotes storage directories
 QUOTES_DIR = Path(settings.QUOTES_STORAGE_PATH)
@@ -35,6 +36,7 @@ async def lifespan(app: FastAPI):
     print("Starting ProposalEngine Backend...")
     await init_db()
     await create_first_superuser()
+    await seed_demo_data()
 
     yield
 

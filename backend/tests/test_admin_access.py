@@ -72,3 +72,5 @@ async def test_admin_panel_shows_model_views(async_client: AsyncClient):
     body = resp.text.lower()
     assert "user" in body
     assert "quote" in body
+    assert "submission" in body
+    assert "proposal" in body

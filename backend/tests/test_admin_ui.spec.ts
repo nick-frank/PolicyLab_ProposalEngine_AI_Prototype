@@ -99,6 +99,8 @@ test.describe("Admin Panel", () => {
     expect(nav).toContain("Quote");
     expect(nav).toContain("Audit Log");
     expect(nav).toContain("Approval");
+    expect(nav).toContain("Submission");
+    expect(nav).toContain("Proposal");
   });
 
   test("user list page loads", async ({ page }) => {
@@ -324,5 +326,82 @@ test.describe("Auth API — Password Reset", () => {
       data: { token: "invalid", password: "NewP@ss999" },
     });
     expect(resp.status()).toBe(400);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 7. ADMIN PANEL — Submission & Proposal Views
+// ═══════════════════════════════════════════════════════════════════════════
+
+test.describe("Admin Panel — Submission & Proposal Views", () => {
+  test("submission list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/submission/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("proposal list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/proposal/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("proposal rate list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/proposal-rate/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("proposal form list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/proposal-form/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("document list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/document/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("structured field list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/structured-field/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("loss run list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/loss-run/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("submission note list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/submission-note/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("proposal note list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/proposal-note/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("status event list page loads", async ({ page }) => {
+    await adminLogin(page);
+    await page.goto(`${ADMIN_URL}/status-event/list`);
+    await expect(page.locator("table, .container")).toBeVisible();
+  });
+
+  test("admin nav shows new model names", async ({ page }) => {
+    await adminLogin(page);
+    const body = await page.textContent("body");
+    expect(body).toContain("Submission");
+    expect(body).toContain("Proposal");
+    expect(body).toContain("Document");
+    expect(body).toContain("Loss Run");
+    expect(body).toContain("Status Event");
+    expect(body).toContain("Structured Field");
   });
 });
