@@ -1,5 +1,5 @@
 """
-Excel Processor for GL Primary Rater
+Excel Processor for ProposalEngine
 Handles Excel workbook manipulation and calculation
 """
 

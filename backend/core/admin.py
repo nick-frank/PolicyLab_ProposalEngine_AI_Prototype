@@ -110,7 +110,7 @@ def setup_admin(app, engine) -> Admin:
         app,
         engine,
         authentication_backend=authentication_backend,
-        title="GL Rater Admin",
+        title="ProposalEngine Admin",
         base_url="/admin",
     )
     admin.add_view(UserAdmin)

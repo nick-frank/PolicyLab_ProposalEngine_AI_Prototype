@@ -11,14 +11,14 @@ class Settings(BaseSettings):
 
     # API Configuration
     API_V1_STR: str = "/api"
-    PROJECT_NAME: str = "GL Primary Rater"
+    PROJECT_NAME: str = "ProposalEngine"
     VERSION: str = "1.0.0"
 
     # CORS
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:8000",
-        "https://gl-rater.com"
+        "https://proposalengine.com"
     ]
 
     # Database

@@ -11,7 +11,7 @@ from core.database import AsyncSessionLocal
 from core.models import User
 from core.users import UserCreate, UserManager
 
-SUPERUSER_EMAIL = "admin@gl-rater.com"
+SUPERUSER_EMAIL = "admin@proposalengine.com"
 SUPERUSER_PASSWORD = "changeme123!"
 
 

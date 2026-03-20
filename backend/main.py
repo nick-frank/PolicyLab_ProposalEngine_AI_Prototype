@@ -1,5 +1,5 @@
 """
-GL Primary Rater Backend API
+ProposalEngine Backend API
 Main FastAPI application for round-trip rating system
 """
 
@@ -32,19 +32,19 @@ for path in [settings.EXCEL_EXPORT_PATH, settings.JSON_EXPORT_PATH, settings.UPL
 async def lifespan(app: FastAPI):
     """Startup and shutdown events"""
     # Startup
-    print("Starting GL Primary Rater Backend...")
+    print("Starting ProposalEngine Backend...")
     await init_db()
     await create_first_superuser()
 
     yield
 
     # Shutdown
-    print("Shutting down GL Primary Rater Backend...")
+    print("Shutting down ProposalEngine Backend...")
 
 # Create FastAPI application
 app = FastAPI(
-    title="GL Primary Rater API",
-    description="Backend API for Excel-based insurance rating calculations",
+    title="ProposalEngine API",
+    description="ProposalEngine backend for Excel-based insurance rating calculations",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -123,7 +123,7 @@ admin_instance = setup_admin(app, engine)
 async def root():
     """Root endpoint"""
     return {
-        "message": "GL Primary Rater API",
+        "message": "ProposalEngine API",
         "version": "1.0.0",
         "status": "healthy"
     }
