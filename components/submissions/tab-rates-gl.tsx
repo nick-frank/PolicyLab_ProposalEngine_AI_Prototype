@@ -5,9 +5,10 @@ import type { PortalSubmission } from "@/lib/types";
 
 interface TabRatesGLProps {
   submission: PortalSubmission;
+  readOnly?: boolean;
 }
 
-export function TabRatesGL({ submission }: TabRatesGLProps) {
+export function TabRatesGL({ submission, readOnly = false }: TabRatesGLProps) {
   return (
     <ExposureRating
       initialInsured={submission.insuredName}

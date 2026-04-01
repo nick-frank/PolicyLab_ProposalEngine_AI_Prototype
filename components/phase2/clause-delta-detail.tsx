@@ -34,7 +34,7 @@ export function ClauseDeltaDetail({ delta }: { delta: ClauseDelta }) {
         </CardHeader>
         <CardContent>
           <SideBySideDiff
-            markelSpan={delta.markelSpan}
+            pcCommercialSpan={delta.pcCommercialSpan}
             kinsaleSpan={delta.kinsaleSpan}
             tightness={delta.direction}
             mechanism={delta.mechanism}
@@ -75,10 +75,10 @@ export function ClauseDeltaDetail({ delta }: { delta: ClauseDelta }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-xs text-muted-foreground">Markel Provenance</CardTitle>
+            <CardTitle className="text-xs text-muted-foreground">P&C Commercial Provenance</CardTitle>
           </CardHeader>
           <CardContent>
-            <ProvenanceFooter provenance={delta.markelProvenance} />
+            <ProvenanceFooter provenance={delta.pcCommercialProvenance} />
           </CardContent>
         </Card>
         <Card>

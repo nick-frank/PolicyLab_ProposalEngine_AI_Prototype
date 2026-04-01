@@ -46,13 +46,13 @@ class QuoteStatus(str, enum.Enum):
 
 
 class SubmissionStatus(str, enum.Enum):
-    RECEIVED = "received"
-    OPEN = "open"
+    PREPARING_TO_UW = "preparing_to_uw"
+    AI_UNDERWRITING = "ai_underwriting"
+    READY_FOR_UW_REVIEW = "ready_for_uw_review"
     UNDER_REVIEW = "under_review"
     PROPOSAL_PRODUCED = "proposal_produced"
     BOUND = "bound"
     DECLINED = "declined"
-    CLOSED = "closed"
 
 
 class ProposalStatus(str, enum.Enum):
@@ -140,7 +140,7 @@ class Submission(Base):
 
     id = Column(String, primary_key=True, default=lambda: str(_uuid.uuid4()))
     reference_number = Column(String, unique=True, nullable=False)
-    status = Column(Enum(SubmissionStatus), default=SubmissionStatus.RECEIVED)
+    status = Column(Enum(SubmissionStatus), default=SubmissionStatus.PREPARING_TO_UW)
 
     # Insured info
     insured_name = Column(String, nullable=False)

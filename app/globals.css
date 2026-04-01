@@ -124,3 +124,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Prevent Tailwind base resets from breaking Leaflet */
+.leaflet-container img {
+  max-width: none !important;
+  max-height: none !important;
+}
+.leaflet-container a {
+  color: inherit;
+}
+.leaflet-container .leaflet-control-zoom a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

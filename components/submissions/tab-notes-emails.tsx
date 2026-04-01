@@ -23,7 +23,7 @@ function formatTimestamp(ts: string) {
   });
 }
 
-export function TabNotesEmails({ initialNotes }: { initialNotes: PortalNote[] }) {
+export function TabNotesEmails({ initialNotes, readOnly = false }: { initialNotes: PortalNote[]; readOnly?: boolean }) {
   const [notes, setNotes] = useState(initialNotes);
   const [newNote, setNewNote] = useState("");
   const [expandedEmails, setExpandedEmails] = useState<Set<string>>(new Set());
@@ -63,18 +63,20 @@ export function TabNotesEmails({ initialNotes }: { initialNotes: PortalNote[] })
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Add Note */}
-        <div className="flex gap-2">
-          <textarea
-            value={newNote}
-            onChange={(e) => setNewNote(e.target.value)}
-            placeholder="Add a note..."
-            className="flex-1 min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-          <Button size="sm" onClick={handleAddNote} disabled={!newNote.trim()} className="self-end">
-            <Send className="h-4 w-4 mr-1" />
-            Add
-          </Button>
-        </div>
+        {!readOnly && (
+          <div className="flex gap-2">
+            <textarea
+              value={newNote}
+              onChange={(e) => setNewNote(e.target.value)}
+              placeholder="Add a note..."
+              className="flex-1 min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            />
+            <Button size="sm" onClick={handleAddNote} disabled={!newNote.trim()} className="self-end">
+              <Send className="h-4 w-4 mr-1" />
+              Add
+            </Button>
+          </div>
+        )}
 
         {/* Feed */}
         <div className="space-y-3">

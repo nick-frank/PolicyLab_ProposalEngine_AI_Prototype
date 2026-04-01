@@ -61,9 +61,9 @@ async def test_seed_creates_proposals_and_children(db_session: AsyncSession):
     result = await db_session.execute(select(func.count()).select_from(StructuredField))
     assert result.scalar() == 21
 
-    # 29 status events
+    # 33 status events (new AI pipeline adds more steps per submission)
     result = await db_session.execute(select(func.count()).select_from(StatusEvent))
-    assert result.scalar() == 29
+    assert result.scalar() == 33
 
 
 @pytest.mark.asyncio

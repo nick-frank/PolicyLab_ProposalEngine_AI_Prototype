@@ -30,8 +30,8 @@ export function AlignmentMatchCard({ alignment }: { alignment: ClauseAlignment }
         {/* Side-by-side clauses */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <h4 className="text-xs font-medium text-muted-foreground">Markel Clause(s)</h4>
-            {alignment.markelClauses.map((c) => (
+            <h4 className="text-xs font-medium text-muted-foreground">P&C Commercial Clause(s)</h4>
+            {alignment.pcCommercialClauses.map((c) => (
               <div key={c.id} className="rounded-md border p-2 text-sm">
                 <p className="font-medium">{c.title}</p>
                 <p className="text-xs text-muted-foreground">{c.formNumber}</p>

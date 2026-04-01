@@ -22,7 +22,7 @@ import { ClipboardList, FileText, FolderOpen, ArrowUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ALL_STATUSES: PortalSubmissionStatus[] = [
-  "received", "open", "under_review", "proposal_produced", "bound", "declined", "closed",
+  "preparing_to_uw", "ai_underwriting", "ready_for_uw_review", "under_review", "proposal_produced", "bound", "declined",
 ];
 
 function formatCurrency(n: number) {
@@ -101,7 +101,7 @@ export default function SubmissionsListPage() {
 
   // Stats
   const openCount = PORTAL_SUBMISSIONS.filter(
-    (s) => s.status === "open" || s.status === "received" || s.status === "under_review"
+    (s) => s.status === "preparing_to_uw" || s.status === "ai_underwriting" || s.status === "ready_for_uw_review" || s.status === "under_review"
   ).length;
   const proposalsThisMonth = PORTAL_PROPOSALS.filter(
     (p) => p.createdDate >= "2026-03-01"

@@ -14,13 +14,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { PricingComparison } from "@/lib/types";
 
 const outcomeColors: Record<string, string> = {
-  markel_wins: "#22c55e",
+  pc_commercial_wins: "#22c55e",
   kinsale_wins: "#ef4444",
   competitive: "#f59e0b",
 };
 
 export function PricingScatter({ comparisons }: { comparisons: PricingComparison[] }) {
-  const markelWins = comparisons.filter((c) => c.outcome === "markel_wins").map((c) => ({
+  const pcCommercialWins = comparisons.filter((c) => c.outcome === "pc_commercial_wins").map((c) => ({
     x: c.tightnessScore,
     y: c.premiumDeltaPercent,
     name: c.insuredName,
@@ -72,7 +72,7 @@ export function PricingScatter({ comparisons }: { comparisons: PricingComparison
               }}
             />
             <Legend />
-            <Scatter name="Markel Wins" data={markelWins} fill={outcomeColors.markel_wins} />
+            <Scatter name="P&C Commercial Wins" data={pcCommercialWins} fill={outcomeColors.pc_commercial_wins} />
             <Scatter name="Kinsale Wins" data={kinsaleWins} fill={outcomeColors.kinsale_wins} />
             <Scatter name="Competitive" data={competitive} fill={outcomeColors.competitive} />
           </ScatterChart>

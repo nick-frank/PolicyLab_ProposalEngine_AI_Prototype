@@ -12,12 +12,12 @@ import {
 } from "@/lib/mock-data";
 import { EmptyState } from "@/components/shared/empty-state";
 import { SubmissionHeader } from "@/components/submissions/submission-header";
+import { SubmissionKeyInfo } from "@/components/submissions/submission-key-info";
 import { TabOverview } from "@/components/submissions/tab-overview";
-import { TabDocuments } from "@/components/submissions/tab-documents";
 import { TabLossRuns } from "@/components/submissions/tab-loss-runs";
 import { TabLossRunsGL } from "@/components/submissions/tab-loss-runs-gl";
-import { TabNotesEmails } from "@/components/submissions/tab-notes-emails";
 import { TabStructuredData } from "@/components/submissions/tab-structured-data";
+import { TabSubjectivities } from "@/components/submissions/tab-subjectivities";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function SubmissionDetailPage({
@@ -47,14 +47,15 @@ export default function SubmissionDetailPage({
 
   return (
     <div className="space-y-6">
-      <SubmissionHeader submission={submission} proposals={proposals} />
+      <SubmissionHeader submission={submission} />
+
+      <SubmissionKeyInfo submission={submission} structuredFields={structuredFields} />
 
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="w-full justify-start">
           <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="documents">Documents ({documents.length})</TabsTrigger>
           <TabsTrigger value="loss-runs">Loss Runs ({lossRuns.length})</TabsTrigger>
-          <TabsTrigger value="notes">Submission Notes ({notes.length})</TabsTrigger>
+          <TabsTrigger value="subjectivities">Subjectivities</TabsTrigger>
           <TabsTrigger value="structured">Structured Data ({structuredFields.length})</TabsTrigger>
         </TabsList>
 
@@ -62,20 +63,17 @@ export default function SubmissionDetailPage({
           <TabOverview
             submission={submission}
             proposals={proposals}
-            structuredFields={structuredFields}
+            documents={documents}
+            notes={notes}
           />
-        </TabsContent>
-
-        <TabsContent value="documents" className="mt-6">
-          <TabDocuments documents={documents} />
         </TabsContent>
 
         <TabsContent value="loss-runs" className="mt-6">
           {isGL ? <TabLossRunsGL /> : <TabLossRuns lossRuns={lossRuns} largeLosses={largeLosses} />}
         </TabsContent>
 
-        <TabsContent value="notes" className="mt-6">
-          <TabNotesEmails initialNotes={notes} />
+        <TabsContent value="subjectivities" className="mt-6">
+          <TabSubjectivities />
         </TabsContent>
 
         <TabsContent value="structured" className="mt-6">

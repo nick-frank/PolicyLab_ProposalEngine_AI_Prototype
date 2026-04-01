@@ -118,8 +118,8 @@ export const RECENT_ACTIVITIES: RecentActivity[] = [
   },
   {
     type: "document",
-    title: "Markel Cyber Policy Form MCY-2024-09 processed — 35 pages, 97% OCR confidence",
+    title: "P&C Commercial Cyber Policy Form MCY-2024-09 processed — 35 pages, 97% OCR confidence",
     timestamp: "2025-01-15T11:12:00Z",
-    link: "/documents/doc-markel-cy-01",
+    link: "/documents/doc-pc-commercial-cy-01",
   },
 ];

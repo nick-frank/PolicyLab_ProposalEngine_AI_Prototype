@@ -13,14 +13,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.94,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This insurance does not apply to bodily injury or property damage arising out of the actual, alleged or threatened discharge, dispersal, seepage, migration, release or escape of pollutants. This exclusion does not apply to bodily injury or property damage arising out of heat, smoke or fumes from a hostile fire.",
       highlightStart: 145,
       highlightEnd: 275,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 14,
         clauseId: "CG-00-01-Section-I-2f",
         extractionConfidence: 0.96,
@@ -44,16 +44,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale removes the hostile fire exception from its pollution exclusion, meaning that pollution-related claims from fires are excluded even if the fire was not set intentionally. Markel retains this standard exception.",
+      "Kinsale removes the hostile fire exception from its pollution exclusion, meaning that pollution-related claims from fires are excluded even if the fire was not set intentionally. P&C Commercial retains this standard exception.",
     reasoningSteps: [
       "Identified pollution exclusion in both GL forms (CG 00 01 equivalent).",
-      "Markel form retains the ISO-standard hostile fire exception at Section I, 2(f)(1)(d).",
+      "P&C Commercial form retains the ISO-standard hostile fire exception at Section I, 2(f)(1)(d).",
       "Kinsale form explicitly states no exception is provided for hostile fire events.",
-      "This creates a gap where HVAC contractors with refrigerant release during a fire would be excluded under Kinsale but potentially covered under Markel.",
+      "This creates a gap where HVAC contractors with refrigerant release during a fire would be excluded under Kinsale but potentially covered under P&C Commercial.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 14,
       clauseId: "CG-00-01-Section-I-2f",
       extractionConfidence: 0.96,
@@ -83,14 +83,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.91,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "The Products-Completed Operations Aggregate Limit is the most we will pay under Coverage A for damages because of bodily injury and property damage included in the products-completed operations hazard. This aggregate limit shall be equal to the General Aggregate Limit shown in the Declarations.",
       highlightStart: 0,
       highlightEnd: 155,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 8,
         clauseId: "CG-00-01-Section-III-4",
         extractionConfidence: 0.94,
@@ -114,16 +114,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale caps the Products-Completed Operations aggregate at 50% of the General Aggregate, while Markel sets it equal to the full General Aggregate. This significantly reduces available limits for completed operations claims under Kinsale.",
+      "Kinsale caps the Products-Completed Operations aggregate at 50% of the General Aggregate, while P&C Commercial sets it equal to the full General Aggregate. This significantly reduces available limits for completed operations claims under Kinsale.",
     reasoningSteps: [
       "Compared aggregate limit language in both forms' Limits of Insurance section.",
-      "Markel sets Products-Completed Operations aggregate equal to the General Aggregate.",
+      "P&C Commercial sets Products-Completed Operations aggregate equal to the General Aggregate.",
       "Kinsale restricts it to 50% of the General Aggregate.",
-      "For a $2M General Aggregate, Kinsale provides only $1M for Products-Completed Ops versus Markel's $2M.",
+      "For a $2M General Aggregate, Kinsale provides only $1M for Products-Completed Ops versus P&C Commercial's $2M.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 8,
       clauseId: "CG-00-01-Section-III-4",
       extractionConfidence: 0.94,
@@ -153,14 +153,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.92,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "Insured contract means that part of any other contract or agreement pertaining to your business under which you assume the tort liability of another party to pay for bodily injury or property damage to a third person or organization. Tort liability means a liability that would be imposed by law in the absence of any contract or agreement.",
       highlightStart: 0,
       highlightEnd: 192,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 22,
         clauseId: "CG-00-01-Section-V-9f",
         extractionConfidence: 0.95,
@@ -184,16 +184,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale narrows the definition of insured contract to require written agreements executed before the loss date and explicitly excludes oral agreements. Markel uses a broader definition that does not impose these restrictions.",
+      "Kinsale narrows the definition of insured contract to require written agreements executed before the loss date and explicitly excludes oral agreements. P&C Commercial uses a broader definition that does not impose these restrictions.",
     reasoningSteps: [
       "Extracted 'insured contract' definitions from both forms' Definitions sections.",
-      "Markel uses standard ISO language allowing any contract pertaining to the business.",
+      "P&C Commercial uses standard ISO language allowing any contract pertaining to the business.",
       "Kinsale adds three restrictions: must be written, must pre-date the loss, and oral/implied agreements are excluded.",
       "Construction contractors frequently rely on oral subcontractor agreements that would not qualify under Kinsale's narrower definition.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 22,
       clauseId: "CG-00-01-Section-V-9f",
       extractionConfidence: 0.95,
@@ -223,14 +223,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.93,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This policy applies to claims first made against the insured during the policy period, provided the wrongful act giving rise to the claim occurred on or after the retroactive date shown in the Declarations. If no retroactive date is shown, coverage applies to wrongful acts occurring at any time prior to the end of the policy period.",
       highlightStart: 192,
       highlightEnd: 332,
       provenance: {
-        documentId: "doc-markel-pl-01",
-        documentName: "Markel PL Policy Form MPL-2024-05",
+        documentId: "doc-pc-commercial-pl-01",
+        documentName: "P&C Commercial PL Policy Form MPL-2024-05",
         pageNumber: 5,
         clauseId: "MPL-IG-1a",
         extractionConfidence: 0.96,
@@ -254,17 +254,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale requires a mandatory retroactive date, while Markel allows full prior acts coverage when no retroactive date is specified. Software firms with long development cycles face significant gaps under Kinsale's approach.",
+      "Kinsale requires a mandatory retroactive date, while P&C Commercial allows full prior acts coverage when no retroactive date is specified. Software firms with long development cycles face significant gaps under Kinsale's approach.",
     reasoningSteps: [
       "Compared claims-made trigger provisions in both professional liability forms.",
-      "Markel provides full prior acts coverage when no retroactive date is declared.",
+      "P&C Commercial provides full prior acts coverage when no retroactive date is declared.",
       "Kinsale mandates a retroactive date and provides no fallback for prior acts.",
       "For software firms, defects discovered years after deployment would be excluded if the retro date postdates the original coding.",
       "This is a high-severity gap for long-tail professional liability exposures.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-pl-01",
-      documentName: "Markel PL Policy Form MPL-2024-05",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-pl-01",
+      documentName: "P&C Commercial PL Policy Form MPL-2024-05",
       pageNumber: 5,
       clauseId: "MPL-IG-1a",
       extractionConfidence: 0.96,
@@ -294,14 +294,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.90,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "Network Security Liability means liability arising from failure of computer security to prevent unauthorized access to, unauthorized use of, or a denial of service attack against a computer system. This includes liability arising from the inability of an authorized third party to gain access to your computer system as a result of such failure.",
       highlightStart: 0,
       highlightEnd: 176,
       provenance: {
-        documentId: "doc-markel-cy-01",
-        documentName: "Markel Cyber Policy Form MCY-2024-09",
+        documentId: "doc-pc-commercial-cy-01",
+        documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
         pageNumber: 12,
         clauseId: "MCY-IG-3b",
         extractionConfidence: 0.92,
@@ -325,17 +325,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale restricts network security coverage to systems owned or controlled by the insured, excluding cloud and third-party hosted environments. Markel's broader language does not impose this ownership requirement, covering failures in any computer system.",
+      "Kinsale restricts network security coverage to systems owned or controlled by the insured, excluding cloud and third-party hosted environments. P&C Commercial's broader language does not impose this ownership requirement, covering failures in any computer system.",
     reasoningSteps: [
       "Extracted network security liability definitions from both cyber forms.",
-      "Markel covers failure of computer security broadly without ownership restrictions.",
+      "P&C Commercial covers failure of computer security broadly without ownership restrictions.",
       "Kinsale requires the system be 'owned, operated, or controlled by the insured.'",
       "Cloud-native software publishers relying on AWS/Azure would have significant gaps under Kinsale.",
       "Denial of service coverage is also absent from Kinsale's language.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-cy-01",
-      documentName: "Markel Cyber Policy Form MCY-2024-09",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-cy-01",
+      documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
       pageNumber: 12,
       clauseId: "MCY-IG-3b",
       extractionConfidence: 0.92,
@@ -365,14 +365,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.88,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This policy provides coverage for claims alleging wrongful employment practices against employees or applicants for employment only. Third-party claims alleging discrimination, harassment, or other wrongful acts by employees against customers, vendors, or other non-employees are excluded from coverage under this form.",
       highlightStart: 99,
       highlightEnd: 310,
       provenance: {
-        documentId: "doc-markel-ep-01",
-        documentName: "Markel EPLI Policy Form MEP-2024-06",
+        documentId: "doc-pc-commercial-ep-01",
+        documentName: "P&C Commercial EPLI Policy Form MEP-2024-06",
         pageNumber: 8,
         clauseId: "MEP-IG-2c",
         extractionConfidence: 0.93,
@@ -396,16 +396,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale provides broader EPLI coverage by including third-party discrimination claims from customers and vendors. Markel's form limits coverage to employee and applicant claims only, excluding third-party harassment lawsuits common in the restaurant industry.",
+      "Kinsale provides broader EPLI coverage by including third-party discrimination claims from customers and vendors. P&C Commercial's form limits coverage to employee and applicant claims only, excluding third-party harassment lawsuits common in the restaurant industry.",
     reasoningSteps: [
       "Compared insuring agreement scope in both EPLI forms.",
-      "Markel explicitly limits coverage to employees and applicants.",
+      "P&C Commercial explicitly limits coverage to employees and applicants.",
       "Kinsale extends coverage to include third-party claims by customers, clients, and vendors.",
-      "For full-service restaurants, customer-facing harassment claims are a significant exposure that Kinsale covers but Markel does not.",
+      "For full-service restaurants, customer-facing harassment claims are a significant exposure that Kinsale covers but P&C Commercial does not.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-ep-01",
-      documentName: "Markel EPLI Policy Form MEP-2024-06",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-ep-01",
+      documentName: "P&C Commercial EPLI Policy Form MEP-2024-06",
       pageNumber: 8,
       clauseId: "MEP-IG-2c",
       extractionConfidence: 0.93,
@@ -435,14 +435,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.87,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This umbrella policy shall follow form with the underlying insurance scheduled herein except as otherwise provided. Coverage shall apply to those occurrences, offenses, wrongful acts, or claims covered by the underlying insurance, subject to the terms, conditions, and exclusions of this policy. Drop-down coverage is provided when underlying limits are exhausted by payment of covered claims.",
       highlightStart: 0,
       highlightEnd: 200,
       provenance: {
-        documentId: "doc-markel-um-01",
-        documentName: "Markel Umbrella Policy Form MUM-2024-08",
+        documentId: "doc-pc-commercial-um-01",
+        documentName: "P&C Commercial Umbrella Policy Form MUM-2024-08",
         pageNumber: 4,
         clauseId: "MUM-IG-1",
         extractionConfidence: 0.91,
@@ -466,16 +466,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale's umbrella operates as excess-only without following form or drop-down, while Markel's follows form with the scheduled underlying coverage and provides drop-down when underlying limits exhaust. This creates coverage gaps for construction firms needing seamless excess protection.",
+      "Kinsale's umbrella operates as excess-only without following form or drop-down, while P&C Commercial's follows form with the scheduled underlying coverage and provides drop-down when underlying limits exhaust. This creates coverage gaps for construction firms needing seamless excess protection.",
     reasoningSteps: [
       "Analyzed the insuring agreements in both umbrella forms.",
-      "Markel umbrella follows form with the underlying insurance and provides drop-down coverage.",
+      "P&C Commercial umbrella follows form with the underlying insurance and provides drop-down coverage.",
       "Kinsale umbrella is excess-only, does not follow form, and has no drop-down provision.",
-      "Construction projects with complex underlying coverage layers benefit significantly from Markel's following form approach.",
+      "Construction projects with complex underlying coverage layers benefit significantly from P&C Commercial's following form approach.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-um-01",
-      documentName: "Markel Umbrella Policy Form MUM-2024-08",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-um-01",
+      documentName: "P&C Commercial Umbrella Policy Form MUM-2024-08",
       pageNumber: 4,
       clauseId: "MUM-IG-1",
       extractionConfidence: 0.91,
@@ -505,14 +505,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.89,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "We will pay for the increased cost of construction incurred to comply with the enforcement of any ordinance or law that regulates the construction or repair of damaged buildings. The limit of insurance for this coverage is twenty-five percent (25%) of the building limit of insurance shown in the Declarations.",
       highlightStart: 0,
       highlightEnd: 178,
       provenance: {
-        documentId: "doc-markel-pr-01",
-        documentName: "Markel Property Policy Form MPR-2024-04",
+        documentId: "doc-pc-commercial-pr-01",
+        documentName: "P&C Commercial Property Policy Form MPR-2024-04",
         pageNumber: 18,
         clauseId: "MPR-AC-5a",
         extractionConfidence: 0.93,
@@ -536,16 +536,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale limits ordinance or law coverage to the lesser of 10% of building value or $100,000, while Markel provides 25% of building value. For restaurants in older buildings subject to code upgrades, this creates a significant coverage gap under Kinsale.",
+      "Kinsale limits ordinance or law coverage to the lesser of 10% of building value or $100,000, while P&C Commercial provides 25% of building value. For restaurants in older buildings subject to code upgrades, this creates a significant coverage gap under Kinsale.",
     reasoningSteps: [
       "Compared Ordinance or Law additional coverage provisions in both property forms.",
-      "Markel provides 25% of building limit for increased cost of construction.",
+      "P&C Commercial provides 25% of building limit for increased cost of construction.",
       "Kinsale caps at the lesser of 10% of building limit or $100,000.",
-      "For a $1M building, Markel provides $250K versus Kinsale's $100K — a $150K gap.",
+      "For a $1M building, P&C Commercial provides $250K versus Kinsale's $100K — a $150K gap.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-pr-01",
-      documentName: "Markel Property Policy Form MPR-2024-04",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-pr-01",
+      documentName: "P&C Commercial Property Policy Form MPR-2024-04",
       pageNumber: 18,
       clauseId: "MPR-AC-5a",
       extractionConfidence: 0.93,
@@ -575,14 +575,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.92,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "Coverage A applies to bodily injury or property damage arising out of operations performed for you by independent contractors, including your general supervision thereof. We will defend and indemnify you for vicarious liability arising from acts of your independent contractors performed within the scope of their engagement.",
       highlightStart: 0,
       highlightEnd: 172,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 10,
         clauseId: "CG-00-01-Section-I-2a-IC",
         extractionConfidence: 0.94,
@@ -606,17 +606,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale excludes all liability arising from independent contractors regardless of supervision, while Markel provides vicarious liability coverage for independent contractor operations. Janitorial companies heavily relying on 1099 workers face total exclusion under Kinsale.",
+      "Kinsale excludes all liability arising from independent contractors regardless of supervision, while P&C Commercial provides vicarious liability coverage for independent contractor operations. Janitorial companies heavily relying on 1099 workers face total exclusion under Kinsale.",
     reasoningSteps: [
       "Identified independent contractor provisions in both GL forms.",
-      "Markel provides affirmative coverage for vicarious liability from independent contractor work.",
+      "P&C Commercial provides affirmative coverage for vicarious liability from independent contractor work.",
       "Kinsale adds a blanket exclusion for all independent contractor operations.",
       "Janitorial services commonly use independent contractors, making this exclusion critical.",
       "No endorsement is available from Kinsale to buy back this coverage.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 10,
       clauseId: "CG-00-01-Section-I-2a-IC",
       extractionConfidence: 0.94,
@@ -646,14 +646,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.95,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "We shall have the right and duty to defend the insured against any claim seeking those damages to which this insurance applies. We will appoint defense counsel and pay all costs of defense in addition to the limit of insurance. Our duty to defend ends when we have used up the applicable limit of insurance in the payment of judgments or settlements.",
       highlightStart: 0,
       highlightEnd: 180,
       provenance: {
-        documentId: "doc-markel-pl-01",
-        documentName: "Markel PL Policy Form MPL-2024-05",
+        documentId: "doc-pc-commercial-pl-01",
+        documentName: "P&C Commercial PL Policy Form MPL-2024-05",
         pageNumber: 7,
         clauseId: "MPL-DFD-1",
         extractionConfidence: 0.97,
@@ -677,17 +677,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale uses duty-to-reimburse with defense costs eroding limits, while Markel provides a duty-to-defend with defense costs in addition to limits. For investment advisors facing regulatory claims, Kinsale's approach can rapidly deplete available limits.",
+      "Kinsale uses duty-to-reimburse with defense costs eroding limits, while P&C Commercial provides a duty-to-defend with defense costs in addition to limits. For investment advisors facing regulatory claims, Kinsale's approach can rapidly deplete available limits.",
     reasoningSteps: [
       "Compared defense obligation language in both PL forms.",
-      "Markel provides a duty to defend with costs outside the limit of insurance.",
+      "P&C Commercial provides a duty to defend with costs outside the limit of insurance.",
       "Kinsale uses a duty to reimburse with costs inside (eroding) the limit.",
       "For investment advisors, SEC/FINRA defense costs averaging $250K-$500K would consume 25-50% of a $1M limit under Kinsale.",
       "This fundamentally changes the economics of the coverage for financial services firms.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-pl-01",
-      documentName: "Markel PL Policy Form MPL-2024-05",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-pl-01",
+      documentName: "P&C Commercial PL Policy Form MPL-2024-05",
       pageNumber: 7,
       clauseId: "MPL-DFD-1",
       extractionConfidence: 0.97,
@@ -717,14 +717,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "low",
     confidence: 0.86,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This insurance does not apply to any loss, cost, or expense arising out of any recall of products, withdrawal of products from the market, or any inspection, repair, replacement, or loss of use of such products. This exclusion applies regardless of whether the recall is voluntary or mandated by a governmental authority.",
       highlightStart: 0,
       highlightEnd: 192,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 17,
         clauseId: "CG-00-01-Section-I-2k",
         extractionConfidence: 0.93,
@@ -748,16 +748,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Both Markel and Kinsale exclude product recall expenses using substantially identical language. The recall exclusion applies whether the recall is voluntary or government-mandated, with no material difference between the two forms.",
+      "Both P&C Commercial and Kinsale exclude product recall expenses using substantially identical language. The recall exclusion applies whether the recall is voluntary or government-mandated, with no material difference between the two forms.",
     reasoningSteps: [
       "Extracted product recall exclusion language from both GL forms.",
-      "Markel and Kinsale use nearly identical language for this exclusion.",
+      "P&C Commercial and Kinsale use nearly identical language for this exclusion.",
       "Both exclude voluntary and government-mandated recalls.",
       "No material difference was identified between the two provisions.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 17,
       clauseId: "CG-00-01-Section-I-2k",
       extractionConfidence: 0.93,
@@ -787,14 +787,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.93,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "We will pay on behalf of the insured the ransom or extortion payment demanded as a direct result of a cyber extortion threat, subject to the full policy aggregate limit. The insured must obtain our prior written consent before making any extortion payment. Coverage includes reasonable and necessary costs to investigate the credibility of any extortion threat.",
       highlightStart: 0,
       highlightEnd: 188,
       provenance: {
-        documentId: "doc-markel-cy-01",
-        documentName: "Markel Cyber Policy Form MCY-2024-09",
+        documentId: "doc-pc-commercial-cy-01",
+        documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
         pageNumber: 16,
         clauseId: "MCY-IG-5",
         extractionConfidence: 0.94,
@@ -818,17 +818,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale sublimits ransomware payments to $250K or 25% of the aggregate (whichever is less) and excludes cryptocurrency, while Markel covers ransom payments up to the full policy aggregate without cryptocurrency restrictions.",
+      "Kinsale sublimits ransomware payments to $250K or 25% of the aggregate (whichever is less) and excludes cryptocurrency, while P&C Commercial covers ransom payments up to the full policy aggregate without cryptocurrency restrictions.",
     reasoningSteps: [
       "Compared cyber extortion provisions in both cyber liability forms.",
-      "Markel provides extortion coverage at full policy limits.",
+      "P&C Commercial provides extortion coverage at full policy limits.",
       "Kinsale imposes a $250K/25% sublimit and excludes cryptocurrency payments.",
       "Given that most ransomware demands are now in cryptocurrency, Kinsale's cryptocurrency exclusion effectively eliminates most ransomware coverage.",
       "This is a critical gap for software publishers targeted by ransomware groups.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-cy-01",
-      documentName: "Markel Cyber Policy Form MCY-2024-09",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-cy-01",
+      documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
       pageNumber: 16,
       clauseId: "MCY-IG-5",
       extractionConfidence: 0.94,
@@ -858,14 +858,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.91,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This insurance does not apply to bodily injury or property damage arising out of assault and battery committed by or at the direction of the insured. Coverage is provided for bodily injury arising out of assault and battery committed by a third party on the insured's premises if the insured exercised reasonable care to prevent such acts.",
       highlightStart: 107,
       highlightEnd: 333,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 15,
         clauseId: "CG-00-01-Section-I-2g-AB",
         extractionConfidence: 0.94,
@@ -889,17 +889,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale's assault and battery exclusion is absolute, covering all related claims including negligent hiring and security. Markel provides coverage for third-party assaults when the insured exercised reasonable care, which is critical for restaurant and bar operations.",
+      "Kinsale's assault and battery exclusion is absolute, covering all related claims including negligent hiring and security. P&C Commercial provides coverage for third-party assaults when the insured exercised reasonable care, which is critical for restaurant and bar operations.",
     reasoningSteps: [
       "Compared assault and battery exclusion language in both GL forms.",
-      "Markel excludes only A&B committed by or directed by the insured; third-party acts may be covered.",
+      "P&C Commercial excludes only A&B committed by or directed by the insured; third-party acts may be covered.",
       "Kinsale's exclusion is absolute, extending to negligent hiring, supervision, and security claims.",
       "For restaurants and bars, third-party patron-on-patron violence is a major exposure.",
       "Kinsale's broader exclusion eliminates coverage for negligent security claims.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 15,
       clauseId: "CG-00-01-Section-I-2g-AB",
       extractionConfidence: 0.94,
@@ -929,14 +929,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.88,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "We will not settle any claim without the insured's consent. If the insured refuses to consent to a settlement recommended by us and elects to continue the defense of such claim, our liability shall not exceed the amount for which we could have settled plus defense costs incurred up to the date of such refusal.",
       highlightStart: 0,
       highlightEnd: 168,
       provenance: {
-        documentId: "doc-markel-pl-01",
-        documentName: "Markel PL Policy Form MPL-2024-05",
+        documentId: "doc-pc-commercial-pl-01",
+        documentName: "P&C Commercial PL Policy Form MPL-2024-05",
         pageNumber: 11,
         clauseId: "MPL-SETTLE-1",
         extractionConfidence: 0.92,
@@ -960,17 +960,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale applies a punitive hammer clause reducing coverage to 60% of the settlement amount if the insured refuses a recommended settlement, while Markel caps at the full proposed settlement plus defense costs. Physicians who resist settlement to protect their reputation face greater financial exposure under Kinsale.",
+      "Kinsale applies a punitive hammer clause reducing coverage to 60% of the settlement amount if the insured refuses a recommended settlement, while P&C Commercial caps at the full proposed settlement plus defense costs. Physicians who resist settlement to protect their reputation face greater financial exposure under Kinsale.",
     reasoningSteps: [
       "Compared consent-to-settle provisions in both professional liability forms.",
-      "Markel uses a standard hammer clause capping at 100% of the proposed settlement.",
+      "P&C Commercial uses a standard hammer clause capping at 100% of the proposed settlement.",
       "Kinsale uses a punitive 60/40 hammer clause with a 30-day consent window.",
       "Physicians frequently refuse settlements to avoid National Practitioner Data Bank reporting.",
       "The 40% co-pay penalty under Kinsale creates significant additional exposure.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-pl-01",
-      documentName: "Markel PL Policy Form MPL-2024-05",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-pl-01",
+      documentName: "P&C Commercial PL Policy Form MPL-2024-05",
       pageNumber: 11,
       clauseId: "MPL-SETTLE-1",
       extractionConfidence: 0.92,
@@ -1000,14 +1000,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.90,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "Any person or organization described in the schedule of additional insureds is an insured, but only with respect to liability for bodily injury, property damage, or personal and advertising injury caused in whole or in part by your acts or omissions or the acts or omissions of those acting on your behalf in the performance of your ongoing operations.",
       highlightStart: 0,
       highlightEnd: 215,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 20,
         clauseId: "CG-20-10",
         extractionConfidence: 0.93,
@@ -1031,17 +1031,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale narrows additional insured coverage to negligent acts only and excludes personal and advertising injury, while Markel uses broader 'caused in whole or in part' language that includes personal and advertising injury.",
+      "Kinsale narrows additional insured coverage to negligent acts only and excludes personal and advertising injury, while P&C Commercial uses broader 'caused in whole or in part' language that includes personal and advertising injury.",
     reasoningSteps: [
       "Compared additional insured endorsement language in both GL forms.",
-      "Markel uses 'caused in whole or in part' which is broader than negligence-only.",
+      "P&C Commercial uses 'caused in whole or in part' which is broader than negligence-only.",
       "Kinsale limits to 'negligent acts or omissions' and restricts to designated locations.",
       "Kinsale also excludes personal and advertising injury for additional insureds.",
       "General contractors requiring broad additional insured protection would find Kinsale's form insufficient.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 20,
       clauseId: "CG-20-10",
       extractionConfidence: 0.93,
@@ -1071,14 +1071,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.89,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This policy does not cover fines, penalties, or costs arising from any regulatory or governmental investigation, inquiry, or proceeding related to a data breach or security event. Regulatory defense costs are excluded from coverage unless specifically endorsed.",
       highlightStart: 0,
       highlightEnd: 196,
       provenance: {
-        documentId: "doc-markel-cy-01",
-        documentName: "Markel Cyber Policy Form MCY-2024-09",
+        documentId: "doc-pc-commercial-cy-01",
+        documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
         pageNumber: 20,
         clauseId: "MCY-EX-REG",
         extractionConfidence: 0.91,
@@ -1102,17 +1102,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale provides regulatory proceeding coverage including defense costs and insurable fines, while Markel excludes regulatory proceedings entirely. Software publishers subject to GDPR, CCPA, and state breach notification laws benefit from Kinsale's broader approach.",
+      "Kinsale provides regulatory proceeding coverage including defense costs and insurable fines, while P&C Commercial excludes regulatory proceedings entirely. Software publishers subject to GDPR, CCPA, and state breach notification laws benefit from Kinsale's broader approach.",
     reasoningSteps: [
       "Compared regulatory proceeding coverage in both cyber forms.",
-      "Markel excludes all regulatory fines, penalties, and defense costs.",
+      "P&C Commercial excludes all regulatory fines, penalties, and defense costs.",
       "Kinsale provides affirmative regulatory defense coverage with a sublimit.",
       "Kinsale also covers fines and penalties to the extent insurable by law.",
       "With increasing state privacy regulations, this is a significant competitive advantage for Kinsale.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-cy-01",
-      documentName: "Markel Cyber Policy Form MCY-2024-09",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-cy-01",
+      documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
       pageNumber: 20,
       clauseId: "MCY-EX-REG",
       extractionConfidence: 0.91,
@@ -1142,14 +1142,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.90,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This exclusion does not apply if the damaged work or the work out of which the damage arises was performed on your behalf by a subcontractor. Coverage is provided for property damage to your completed work arising out of any part of the work performed for you by a subcontractor, subject to all other terms and conditions of this policy.",
       highlightStart: 0,
       highlightEnd: 194,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 16,
         clauseId: "CG-00-01-Section-I-2l",
         extractionConfidence: 0.93,
@@ -1173,17 +1173,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale removes the standard subcontractor exception to the 'damage to your work' exclusion. When a subcontractor's defective work damages the GC's completed project, Kinsale excludes coverage while Markel provides it.",
+      "Kinsale removes the standard subcontractor exception to the 'damage to your work' exclusion. When a subcontractor's defective work damages the GC's completed project, Kinsale excludes coverage while P&C Commercial provides it.",
     reasoningSteps: [
       "Compared 'Damage to Your Work' exclusion language in both GL forms.",
-      "Markel retains the standard ISO subcontractor exception to Exclusion l.",
+      "P&C Commercial retains the standard ISO subcontractor exception to Exclusion l.",
       "Kinsale eliminates the subcontractor exception entirely.",
       "General contractors who subcontract most work rely heavily on this exception.",
       "Without it, completed operations coverage under Kinsale is significantly diminished.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 16,
       clauseId: "CG-00-01-Section-I-2l",
       extractionConfidence: 0.93,
@@ -1213,14 +1213,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "high",
     confidence: 0.92,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This policy covers only financial loss resulting from a wrongful act in the performance of professional services. Bodily injury, including physical harm, sickness, disease, disability, or death, is specifically excluded from coverage under this policy regardless of the nature of the underlying professional service.",
       highlightStart: 98,
       highlightEnd: 298,
       provenance: {
-        documentId: "doc-markel-pl-01",
-        documentName: "Markel PL Policy Form MPL-2024-05",
+        documentId: "doc-pc-commercial-pl-01",
+        documentName: "P&C Commercial PL Policy Form MPL-2024-05",
         pageNumber: 9,
         clauseId: "MPL-EX-BI",
         extractionConfidence: 0.94,
@@ -1244,17 +1244,17 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale provides a bodily injury carve-back for healthcare providers' professional services, covering medical incidents in excess of malpractice insurance. Markel's PL form excludes all bodily injury regardless of the professional service, creating a gap for physician practices.",
+      "Kinsale provides a bodily injury carve-back for healthcare providers' professional services, covering medical incidents in excess of malpractice insurance. P&C Commercial's PL form excludes all bodily injury regardless of the professional service, creating a gap for physician practices.",
     reasoningSteps: [
       "Compared bodily injury provisions in both professional liability forms.",
-      "Markel excludes all bodily injury from professional liability coverage.",
+      "P&C Commercial excludes all bodily injury from professional liability coverage.",
       "Kinsale provides a carve-back for bodily injury arising from medical incidents by licensed providers.",
       "Kinsale's BI coverage applies excess of medical malpractice insurance.",
       "This is a significant broader coverage for physician offices under Kinsale.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-pl-01",
-      documentName: "Markel PL Policy Form MPL-2024-05",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-pl-01",
+      documentName: "P&C Commercial PL Policy Form MPL-2024-05",
       pageNumber: 9,
       clauseId: "MPL-EX-BI",
       extractionConfidence: 0.94,
@@ -1284,14 +1284,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "low",
     confidence: 0.85,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "You must see to it that we are notified as soon as practicable of an occurrence or an offense which may result in a claim. Notice should include how, when and where the occurrence or offense took place and the names and addresses of any injured persons and witnesses. Failure to provide timely notice shall not void coverage unless such failure materially prejudices our rights.",
       highlightStart: 0,
       highlightEnd: 234,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 24,
         clauseId: "CG-00-01-Section-IV-2a",
         extractionConfidence: 0.93,
@@ -1315,16 +1315,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Both Markel and Kinsale require notice 'as soon as practicable' and apply a notice-prejudice standard. The provisions are functionally equivalent, with only minor wording differences that do not affect coverage.",
+      "Both P&C Commercial and Kinsale require notice 'as soon as practicable' and apply a notice-prejudice standard. The provisions are functionally equivalent, with only minor wording differences that do not affect coverage.",
     reasoningSteps: [
       "Compared notice conditions in both GL forms.",
       "Both require notice 'as soon as practicable' rather than strict deadlines.",
       "Both apply a prejudice requirement for late notice.",
       "Minor wording differences do not create a substantive coverage gap.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 24,
       clauseId: "CG-00-01-Section-IV-2a",
       extractionConfidence: 0.93,
@@ -1354,14 +1354,14 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
     severity: "medium",
     confidence: 0.87,
     abstained: false,
-    markelSpan: {
+    pcCommercialSpan: {
       fullText:
         "This insurance does not apply to property damage to property owned, rented to, occupied by, used by, or in the care, custody, or control of the insured. This exclusion applies to property damage to premises rented to the insured or temporarily occupied by the insured with permission of the owner, except as provided under Coverage A for Damage to Premises Rented to You.",
       highlightStart: 0,
       highlightEnd: 224,
       provenance: {
-        documentId: "doc-markel-gl-01",
-        documentName: "Markel GL Policy Form MGL-2024-07",
+        documentId: "doc-pc-commercial-gl-01",
+        documentName: "P&C Commercial GL Policy Form MGL-2024-07",
         pageNumber: 13,
         clauseId: "CG-00-01-Section-I-2j",
         extractionConfidence: 0.94,
@@ -1385,16 +1385,16 @@ export const CLAUSE_DELTAS: ClauseDelta[] = [
       },
     },
     plainLanguageExplanation:
-      "Kinsale provides a $50,000 sublimit for damage to property in the insured's care, custody, or control, while Markel applies a blanket CCC exclusion. For janitorial services working on client premises, Kinsale's built-in CCC coverage is a meaningful advantage.",
+      "Kinsale provides a $50,000 sublimit for damage to property in the insured's care, custody, or control, while P&C Commercial applies a blanket CCC exclusion. For janitorial services working on client premises, Kinsale's built-in CCC coverage is a meaningful advantage.",
     reasoningSteps: [
       "Compared care, custody, or control exclusion language in both GL forms.",
-      "Markel applies the standard ISO CCC exclusion without exception beyond fire damage to rented premises.",
+      "P&C Commercial applies the standard ISO CCC exclusion without exception beyond fire damage to rented premises.",
       "Kinsale carves back $50,000 per occurrence for CCC property during covered operations.",
       "Janitorial services frequently damage client property (equipment, fixtures) making this carve-back valuable.",
     ],
-    markelProvenance: {
-      documentId: "doc-markel-gl-01",
-      documentName: "Markel GL Policy Form MGL-2024-07",
+    pcCommercialProvenance: {
+      documentId: "doc-pc-commercial-gl-01",
+      documentName: "P&C Commercial GL Policy Form MGL-2024-07",
       pageNumber: 13,
       clauseId: "CG-00-01-Section-I-2j",
       extractionConfidence: 0.94,

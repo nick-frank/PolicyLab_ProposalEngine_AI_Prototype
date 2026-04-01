@@ -18,7 +18,7 @@ import type { PricingComparison } from "@/lib/types";
 type SortKey = "insuredName" | "premiumDeltaPercent" | "tightnessScore" | "outcome";
 
 const outcomeLabels: Record<string, { label: string; className: string }> = {
-  markel_wins: { label: "Markel Wins", className: "bg-green-100 text-green-800" },
+  pc_commercial_wins: { label: "P&C Commercial Wins", className: "bg-green-100 text-green-800" },
   kinsale_wins: { label: "Kinsale Wins", className: "bg-red-100 text-red-800" },
   competitive: { label: "Competitive", className: "bg-amber-100 text-amber-800" },
 };
@@ -57,7 +57,7 @@ export function PricingTable({ comparisons }: { comparisons: PricingComparison[]
           <TableRow>
             <TableHead><SortHeader label="Insured" k="insuredName" /></TableHead>
             <TableHead>Coverage</TableHead>
-            <TableHead className="text-right">Markel</TableHead>
+            <TableHead className="text-right">P&C Commercial</TableHead>
             <TableHead className="text-right">Kinsale</TableHead>
             <TableHead className="text-right"><SortHeader label="Delta" k="premiumDeltaPercent" /></TableHead>
             <TableHead className="text-right"><SortHeader label="Tightness" k="tightnessScore" /></TableHead>
@@ -71,7 +71,7 @@ export function PricingTable({ comparisons }: { comparisons: PricingComparison[]
               <TableRow key={c.id}>
                 <TableCell className="font-medium text-sm">{c.insuredName}</TableCell>
                 <TableCell className="text-sm">{c.coverageType}</TableCell>
-                <TableCell className="text-right text-sm">{formatCurrency(c.markelPremium)}</TableCell>
+                <TableCell className="text-right text-sm">{formatCurrency(c.pcCommercialPremium)}</TableCell>
                 <TableCell className="text-right text-sm">{formatCurrency(c.kinsalePremium)}</TableCell>
                 <TableCell className="text-right">
                   <span className={cn(

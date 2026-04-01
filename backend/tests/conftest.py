@@ -456,9 +456,9 @@ async def sample_status_event(db_session: AsyncSession, sample_submission: Submi
     event = StatusEvent(
         id=str(uuid.uuid4()),
         submission_id=sample_submission.id,
-        from_status="received",
-        to_status="open",
-        description="Submission opened for review",
+        from_status="preparing_to_uw",
+        to_status="ai_underwriting",
+        description="AI underwriting started",
         actor_name="System",
         occurred_at=datetime(2026, 3, 15, 10, 30, 0),
     )
@@ -481,13 +481,13 @@ async def seed_submissions(db_session: AsyncSession) -> dict:
     submission_data = [
         ("SUB-2026-001", "Pacific Coast Builders", SubmissionStatus.UNDER_REVIEW, 125000.0),
         ("SUB-2026-002", "Metro Electrical Services", SubmissionStatus.PROPOSAL_PRODUCED, 85000.0),
-        ("SUB-2026-003", "Summit Landscaping Inc", SubmissionStatus.RECEIVED, 45000.0),
+        ("SUB-2026-003", "Summit Landscaping Inc", SubmissionStatus.PREPARING_TO_UW, 45000.0),
         ("SUB-2026-004", "Harbor Marine Services", SubmissionStatus.BOUND, 210000.0),
-        ("SUB-2026-005", "Valley Plumbing Co", SubmissionStatus.OPEN, 62000.0),
+        ("SUB-2026-005", "Valley Plumbing Co", SubmissionStatus.AI_UNDERWRITING, 62000.0),
         ("SUB-2026-006", "Cascade HVAC Systems", SubmissionStatus.DECLINED, 95000.0),
-        ("SUB-2026-007", "Pinnacle Roofing LLC", SubmissionStatus.UNDER_REVIEW, 155000.0),
-        ("SUB-2026-008", "Greenfield Paving", SubmissionStatus.CLOSED, 78000.0),
-        ("SUB-2026-009", "Ironworks Fabrication", SubmissionStatus.RECEIVED, 112000.0),
+        ("SUB-2026-007", "Pinnacle Roofing LLC", SubmissionStatus.READY_FOR_UW_REVIEW, 155000.0),
+        ("SUB-2026-008", "Greenfield Paving", SubmissionStatus.BOUND, 78000.0),
+        ("SUB-2026-009", "Ironworks Fabrication", SubmissionStatus.PREPARING_TO_UW, 112000.0),
     ]
 
     for ref, name, status, premium in submission_data:
@@ -562,9 +562,9 @@ async def seed_submissions(db_session: AsyncSession) -> dict:
     evt = StatusEvent(
         id=str(uuid.uuid4()),
         submission_id=submissions[0].id,
-        from_status="received",
-        to_status="open",
-        description="Submission opened",
+        from_status="preparing_to_uw",
+        to_status="ai_underwriting",
+        description="AI underwriting started",
         actor_name="System",
     )
     db_session.add(evt)

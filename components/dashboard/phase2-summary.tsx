@@ -42,7 +42,7 @@ export function Phase2Summary() {
       <MetricBar
         segments={[
           { label: "Kinsale Tighter", value: phase2.tightnessDistribution.tighter, color: "bg-red-500" },
-          { label: "Markel Broader", value: phase2.tightnessDistribution.broader, color: "bg-green-500" },
+          { label: "P&C Commercial Broader", value: phase2.tightnessDistribution.broader, color: "bg-green-500" },
           { label: "Neutral", value: phase2.tightnessDistribution.neutral, color: "bg-zinc-400" },
         ]}
       />

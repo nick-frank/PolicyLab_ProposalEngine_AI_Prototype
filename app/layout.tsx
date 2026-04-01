@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Markel AI — Underwriting Intelligence Platform",
+  title: "P&C Commercial AI — Underwriting Intelligence Platform",
   description: "AI-powered underwriting decision support for E&S insurance",
 };
 

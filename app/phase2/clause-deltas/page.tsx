@@ -18,7 +18,7 @@ const filters: FilterConfig[] = [
     label: "Direction",
     options: [
       { value: "tighter", label: "Kinsale Tighter" },
-      { value: "broader", label: "Markel Broader" },
+      { value: "broader", label: "P&C Commercial Broader" },
       { value: "neutral", label: "Neutral" },
     ],
   },
@@ -68,7 +68,7 @@ export default function ClauseDeltasPage() {
         <div>
           <h1 className="text-2xl font-bold">Clause Deltas</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Side-by-side policy language comparison between Markel and Kinsale
+            Side-by-side policy language comparison between P&C Commercial and Kinsale
           </p>
         </div>
         <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v)}>

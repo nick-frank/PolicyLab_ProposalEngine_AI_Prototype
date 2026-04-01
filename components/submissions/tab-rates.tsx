@@ -19,7 +19,7 @@ function formatCurrency(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
 }
 
-export function TabRates({ initialRates }: { initialRates: PortalRate[] }) {
+export function TabRates({ initialRates, readOnly = false }: { initialRates: PortalRate[]; readOnly?: boolean }) {
   const [rates, setRates] = useState(initialRates);
   const [editedCells, setEditedCells] = useState<Set<string>>(new Set());
 
@@ -62,7 +62,7 @@ export function TabRates({ initialRates }: { initialRates: PortalRate[] }) {
                 <TableHead>Base Rate</TableHead>
                 <TableHead>Exposure</TableHead>
                 <TableHead>Exposure Base</TableHead>
-                <TableHead>Manual Premium</TableHead>
+                <TableHead>Technical Rate</TableHead>
                 <TableHead>LCM</TableHead>
                 <TableHead>Adjusted Premium</TableHead>
               </TableRow>
@@ -74,41 +74,53 @@ export function TabRates({ initialRates }: { initialRates: PortalRate[] }) {
                   <TableCell className="text-sm">{rate.classDescription}</TableCell>
                   <TableCell className="text-sm">{rate.territory}</TableCell>
                   <TableCell>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      value={rate.baseRate}
-                      onChange={(e) => handleEdit(rate.id, "baseRate", e.target.value)}
-                      className={cn(
-                        "w-24 h-8 text-sm",
-                        editedCells.has(`${rate.id}-baseRate`) && "bg-amber-50 border-amber-300"
-                      )}
-                    />
+                    {readOnly ? (
+                      <span className="text-sm">{rate.baseRate}</span>
+                    ) : (
+                      <Input
+                        type="number"
+                        step="0.01"
+                        value={rate.baseRate}
+                        onChange={(e) => handleEdit(rate.id, "baseRate", e.target.value)}
+                        className={cn(
+                          "w-24 h-8 text-sm",
+                          editedCells.has(`${rate.id}-baseRate`) && "bg-amber-50 border-amber-300"
+                        )}
+                      />
+                    )}
                   </TableCell>
                   <TableCell>
-                    <Input
-                      type="number"
-                      value={rate.exposure}
-                      onChange={(e) => handleEdit(rate.id, "exposure", e.target.value)}
-                      className={cn(
-                        "w-28 h-8 text-sm",
-                        editedCells.has(`${rate.id}-exposure`) && "bg-amber-50 border-amber-300"
-                      )}
-                    />
+                    {readOnly ? (
+                      <span className="text-sm">{rate.exposure.toLocaleString()}</span>
+                    ) : (
+                      <Input
+                        type="number"
+                        value={rate.exposure}
+                        onChange={(e) => handleEdit(rate.id, "exposure", e.target.value)}
+                        className={cn(
+                          "w-28 h-8 text-sm",
+                          editedCells.has(`${rate.id}-exposure`) && "bg-amber-50 border-amber-300"
+                        )}
+                      />
+                    )}
                   </TableCell>
                   <TableCell className="text-sm">{rate.exposureBase}</TableCell>
                   <TableCell className="text-sm">{formatCurrency(rate.manualPremium)}</TableCell>
                   <TableCell>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      value={rate.lcm}
-                      onChange={(e) => handleEdit(rate.id, "lcm", e.target.value)}
-                      className={cn(
-                        "w-20 h-8 text-sm",
-                        editedCells.has(`${rate.id}-lcm`) && "bg-amber-50 border-amber-300"
-                      )}
-                    />
+                    {readOnly ? (
+                      <span className="text-sm">{rate.lcm}</span>
+                    ) : (
+                      <Input
+                        type="number"
+                        step="0.01"
+                        value={rate.lcm}
+                        onChange={(e) => handleEdit(rate.id, "lcm", e.target.value)}
+                        className={cn(
+                          "w-20 h-8 text-sm",
+                          editedCells.has(`${rate.id}-lcm`) && "bg-amber-50 border-amber-300"
+                        )}
+                      />
+                    )}
                   </TableCell>
                   <TableCell className="text-sm font-medium">{formatCurrency(rate.adjustedPremium)}</TableCell>
                 </TableRow>

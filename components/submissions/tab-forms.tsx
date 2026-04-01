@@ -18,9 +18,9 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { FileText, Search, Trash2, Plus, ChevronDown, X } from "lucide-react";
+import { FileText, Search, Trash2, Plus, ChevronDown, X, ClipboardEdit } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { SubmissionForm, SubmissionFormType, SubmissionFormAdjustment } from "@/lib/types";
+import type { SubmissionForm, SubmissionFormType, SubmissionFormAdjustment, SubmissionFormFillIn } from "@/lib/types";
 import { FORMS_CATALOG } from "@/lib/mock-data";
 
 const TYPE_CONFIG: Record<SubmissionFormType, { label: string; className: string }> = {
@@ -52,9 +52,10 @@ function uid() {
   return `gen-${nextId++}`;
 }
 
-export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
+export function TabForms({ forms: initialForms, readOnly = false }: { forms: SubmissionForm[]; readOnly?: boolean }) {
   const [forms, setForms] = useState<SubmissionForm[]>(initialForms);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [fillInExpanded, setFillInExpanded] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -115,6 +116,29 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
     });
   }
 
+  function toggleFillIn(id: string) {
+    setFillInExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  function updateFillIn(formId: string, fillInId: string, value: string) {
+    setForms((prev) =>
+      prev.map((f) => {
+        if (f.id !== formId) return f;
+        return {
+          ...f,
+          fillIns: (f.fillIns || []).map((fi) =>
+            fi.id === fillInId ? { ...fi, value } : fi
+          ),
+        };
+      })
+    );
+  }
+
   function addAdjustment(formId: string) {
     const adj = newAdj[formId];
     if (!adj || !adj.description.trim() || !adj.amount) return;
@@ -147,7 +171,7 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
   }
 
   const categories = [...new Set(forms.map((f) => f.category))];
-  const COL_COUNT = 6;
+  const COL_COUNT = 7;
 
   return (
     <Card>
@@ -160,7 +184,7 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
           <span className="text-sm text-muted-foreground">{forms.length} forms</span>
         </div>
         {/* Search bar */}
-        <div ref={searchRef} className="relative mt-3">
+        {!readOnly && <div ref={searchRef} className="relative mt-3">
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -200,7 +224,7 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
               No matching forms found.
             </div>
           )}
-        </div>
+        </div>}
       </CardHeader>
       <CardContent>
         <Table>
@@ -212,6 +236,7 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
               <TableHead>Form Name</TableHead>
               <TableHead>Type</TableHead>
               <TableHead className="text-right">Adj. (Net)</TableHead>
+              <TableHead className="w-20 text-center">Form Fill</TableHead>
               <TableHead className="w-12" />
             </TableRow>
           </TableHeader>
@@ -235,6 +260,8 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
                   const typeConfig = TYPE_CONFIG[form.type];
                   const net = netAdjustment(form.adjustments);
                   const isExpanded = expanded.has(form.id);
+                  const isFillInOpen = fillInExpanded.has(form.id);
+                  const hasFillIns = (form.fillIns?.length ?? 0) > 0;
                   const adjState = newAdj[form.id] || { description: "", type: "debit" as const, amount: "" };
 
                   return (
@@ -288,21 +315,80 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
                                 <span className="text-sm text-muted-foreground">$0</span>
                               )}
                             </TableCell>
+                            <TableCell className="w-20 text-center">
+                              {hasFillIns && (
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className={cn(
+                                    "h-7 px-2 gap-1 text-xs",
+                                    isFillInOpen ? "text-primary" : "text-muted-foreground hover:text-primary",
+                                  )}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleFillIn(form.id);
+                                  }}
+                                >
+                                  <ClipboardEdit className="h-3.5 w-3.5" />
+                                  <ChevronDown
+                                    className={cn(
+                                      "h-3 w-3 transition-transform",
+                                      isFillInOpen && "rotate-180",
+                                    )}
+                                  />
+                                </Button>
+                              )}
+                            </TableCell>
                             <TableCell className="w-12">
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  removeForm(form.id);
-                                }}
-                              >
-                                <Trash2 className="h-3.5 w-3.5" />
-                              </Button>
+                              {!readOnly && (
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  className="h-7 w-7 text-muted-foreground hover:text-destructive"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    removeForm(form.id);
+                                  }}
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </Button>
+                              )}
                             </TableCell>
                           </TableRow>
                         </CollapsibleTrigger>
+                        {/* Form Fill-in section */}
+                        {isFillInOpen && hasFillIns && (form.fillIns || []).map((fi) => {
+                          const isPct = /percent/i.test(fi.label) || /%/.test(fi.label);
+                          return (
+                            <TableRow key={fi.id} className="bg-indigo-50/40">
+                              <TableCell />
+                              <TableCell />
+                              <TableCell colSpan={2} className="text-sm">
+                                <label className="text-xs text-muted-foreground block mb-1">{fi.label}</label>
+                                {readOnly ? (
+                                  <span className="text-sm font-medium">{fi.value}{isPct && !fi.value.includes("%") ? "%" : ""}</span>
+                                ) : (
+                                  <div className="flex items-center gap-1 max-w-xs">
+                                    <Input
+                                      type={isPct ? "number" : "text"}
+                                      min={isPct ? 0 : undefined}
+                                      max={isPct ? 100 : undefined}
+                                      step={isPct ? 1 : undefined}
+                                      value={fi.value.replace(/%$/, "")}
+                                      onChange={(e) => updateFillIn(form.id, fi.id, e.target.value)}
+                                      className="h-8 text-sm"
+                                    />
+                                    {isPct && <span className="text-sm font-medium text-muted-foreground shrink-0">%</span>}
+                                  </div>
+                                )}
+                              </TableCell>
+                              <TableCell />
+                              <TableCell />
+                              <TableCell />
+                              <TableCell />
+                            </TableRow>
+                          );
+                        })}
                         <CollapsibleContent asChild>
                           <>
                             {/* Existing adjustments */}
@@ -337,19 +423,21 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
                                   </span>
                                 </TableCell>
                                 <TableCell>
-                                  <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                                    onClick={() => removeAdjustment(form.id, adj.id)}
-                                  >
-                                    <X className="h-3.5 w-3.5" />
-                                  </Button>
+                                  {!readOnly && (
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="h-7 w-7 text-muted-foreground hover:text-destructive"
+                                      onClick={() => removeAdjustment(form.id, adj.id)}
+                                    >
+                                      <X className="h-3.5 w-3.5" />
+                                    </Button>
+                                  )}
                                 </TableCell>
                               </TableRow>
                             ))}
                             {/* Add adjustment row */}
-                            <TableRow className="bg-muted/10">
+                            {!readOnly && <TableRow className="bg-muted/10">
                               <TableCell />
                               <TableCell />
                               <TableCell colSpan={2}>
@@ -412,7 +500,7 @@ export function TabForms({ forms: initialForms }: { forms: SubmissionForm[] }) {
                                   <Plus className="h-3.5 w-3.5" />
                                 </Button>
                               </TableCell>
-                            </TableRow>
+                            </TableRow>}
                           </>
                         </CollapsibleContent>
                       </>

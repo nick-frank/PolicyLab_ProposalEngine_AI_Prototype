@@ -37,7 +37,7 @@ export function ClauseDeltaCard({ delta }: { delta: ClauseDelta }) {
               {delta.naicsCode}
             </Badge>
           </div>
-          <ProvenanceFooter provenance={delta.markelProvenance} compact />
+          <ProvenanceFooter provenance={delta.pcCommercialProvenance} compact />
         </CardContent>
       </Card>
     </Link>

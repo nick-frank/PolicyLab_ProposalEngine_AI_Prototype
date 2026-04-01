@@ -83,7 +83,7 @@ export function ScenarioResultPanel({ scenario }: { scenario: ClaimVignette }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardContent className="pt-6">
-            <OutcomeColumn label="Markel Outcome" outcome={scenario.markelOutcome} />
+            <OutcomeColumn label="P&C Commercial Outcome" outcome={scenario.pcCommercialOutcome} />
           </CardContent>
         </Card>
         <Card>

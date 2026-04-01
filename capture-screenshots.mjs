@@ -118,21 +118,21 @@ const PAGES = [
     title: "Clause Delta Library — List View",
     section: "PolicyLab",
     description:
-      "This screen lists every clause-level difference the AI has identified between Markel's policy forms and competitor offerings. Underwriters use the search bar and filters to locate specific exclusions, conditions, or definitions. Each row shows the clause name, the carriers compared, and a severity indicator. Clicking any row opens the full side-by-side comparison. This is the starting point for competitive form analysis.",
+      "This screen lists every clause-level difference the AI has identified between P&C Commercial's policy forms and competitor offerings. Underwriters use the search bar and filters to locate specific exclusions, conditions, or definitions. Each row shows the clause name, the carriers compared, and a severity indicator. Clicking any row opens the full side-by-side comparison. This is the starting point for competitive form analysis.",
   },
   {
     url: "/phase2/clause-deltas/cd-001",
     title: "Clause Delta Detail — Pollution Exclusion",
     section: "PolicyLab",
     description:
-      "Here the underwriter sees the exact wording differences for a pollution exclusion clause across two carrier forms. The left and right panels display each carrier's language with differences highlighted. Below, the AI provides a plain-English summary of the practical impact — for example, whether Markel's form is broader or narrower — and recommends whether this delta creates a competitive advantage or exposure. Users reference this screen when positioning quotes against specific competitors.",
+      "Here the underwriter sees the exact wording differences for a pollution exclusion clause across two carrier forms. The left and right panels display each carrier's language with differences highlighted. Below, the AI provides a plain-English summary of the practical impact — for example, whether P&C Commercial's form is broader or narrower — and recommends whether this delta creates a competitive advantage or exposure. Users reference this screen when positioning quotes against specific competitors.",
   },
   {
     url: "/phase2/scorecards",
     title: "Coverage Tightness Scorecards — Overview",
     section: "PolicyLab",
     description:
-      "The scorecards overview presents a grid of coverage segments (e.g., Plumbing/HVAC, Artisan Contractors) with a tightness score for each carrier. Higher scores indicate more restrictive coverage; lower scores indicate broader forms. Underwriters use this to quickly identify which product lines Markel leads on breadth and where competitors may be more generous. Click any segment card to drill into the full scorecard breakdown.",
+      "The scorecards overview presents a grid of coverage segments (e.g., Plumbing/HVAC, Artisan Contractors) with a tightness score for each carrier. Higher scores indicate more restrictive coverage; lower scores indicate broader forms. Underwriters use this to quickly identify which product lines P&C Commercial leads on breadth and where competitors may be more generous. Click any segment card to drill into the full scorecard breakdown.",
   },
   {
     url: "/phase2/scorecards/sc-001",
@@ -160,7 +160,7 @@ const PAGES = [
     title: "Selection & Pricing Analysis",
     section: "PolicyLab",
     description:
-      "This screen presents an adverse-selection and pricing-adequacy analysis. Charts compare Markel's rate level to competitors across class codes, highlighting segments where Markel may be attracting unfavorable risk (priced too low) or losing desirable business (priced too high). A data table below shows per-class rate comparisons with loss ratio context. Underwriters and actuaries use this to calibrate rate recommendations and identify classes where pricing adjustments would improve the book's performance.",
+      "This screen presents an adverse-selection and pricing-adequacy analysis. Charts compare P&C Commercial's rate level to competitors across class codes, highlighting segments where P&C Commercial may be attracting unfavorable risk (priced too low) or losing desirable business (priced too high). A data table below shows per-class rate comparisons with loss ratio context. Underwriters and actuaries use this to calibrate rate recommendations and identify classes where pricing adjustments would improve the book's performance.",
   },
   {
     url: "/phase2/clause-alignment",
@@ -174,7 +174,7 @@ const PAGES = [
     title: "Alignment Detail — Pollution Exclusion Match",
     section: "PolicyLab",
     description:
-      "This detail view displays the specific clause matches found for a pollution exclusion alignment search. Each matched clause is shown side by side with a confidence score indicating how closely the language aligns. Key differences in scope, applicability, and exceptions are highlighted. The underwriter uses this to determine whether Markel's pollution exclusion is substantively equivalent to a competitor's — critical for form-matching requirements in large accounts.",
+      "This detail view displays the specific clause matches found for a pollution exclusion alignment search. Each matched clause is shown side by side with a confidence score indicating how closely the language aligns. Key differences in scope, applicability, and exceptions are highlighted. The underwriter uses this to determine whether P&C Commercial's pollution exclusion is substantively equivalent to a competitor's — critical for form-matching requirements in large accounts.",
   },
   {
     url: "/phase2/document-audit",
@@ -184,11 +184,11 @@ const PAGES = [
       "This audit screen provides transparency into how the AI parsed each uploaded policy document. Every processed document is listed with an extraction quality score, the number of clauses identified, and any ambiguities flagged for human review. Users click into individual documents to verify the AI's interpretation. This builds trust in the AI outputs by letting underwriters see exactly what the system understood and where it might need correction.",
   },
   {
-    url: "/phase2/document-audit/doc-markel-gl-01",
-    title: "Document Audit Detail — Markel GL Policy",
+    url: "/phase2/document-audit/doc-pc-commercial-gl-01",
+    title: "Document Audit Detail — P&C Commercial GL Policy",
     section: "PolicyLab",
     description:
-      "The document audit detail for Markel's GL policy shows the AI's extracted structure alongside the original source text. Sections, clauses, exclusions, and definitions are organized in a navigable tree. Each extracted element has a confidence indicator — green for high confidence, amber for uncertain. Users can click on any element to see the exact source text it was derived from. This is where subject-matter experts validate the AI's document understanding before it feeds into clause comparisons and scorecards.",
+      "The document audit detail for P&C Commercial's GL policy shows the AI's extracted structure alongside the original source text. Sections, clauses, exclusions, and definitions are organized in a navigable tree. Each extracted element has a confidence indicator — green for high confidence, amber for uncertain. Users can click on any element to see the exact source text it was derived from. This is where subject-matter experts validate the AI's document understanding before it feeds into clause comparisons and scorecards.",
   },
   {
     url: "/phase2/claims-search",
@@ -599,7 +599,7 @@ async function createWordDoc(screenshots) {
     new Paragraph({ spacing: { before: 3000 } }),
     new Paragraph({
       children: [
-        new TextRun({ text: "MARKEL", bold: true, size: 72, font: "Calibri", color: "B2903C" }),
+        new TextRun({ text: "P&C COMMERCIAL", bold: true, size: 72, font: "Calibri", color: "B2903C" }),
       ],
       alignment: AlignmentType.CENTER,
     }),
@@ -797,7 +797,7 @@ async function createWordDoc(screenshots) {
     ],
   });
 
-  const outputPath = path.join(process.cwd(), "..", "Markel_UI_Demo_Screenshots.docx");
+  const outputPath = path.join(process.cwd(), "..", "PCC_UI_Demo_Screenshots.docx");
   const buffer = await Packer.toBuffer(doc);
   fs.writeFileSync(outputPath, buffer);
   console.log(`\nWord document saved to: ${outputPath}`);

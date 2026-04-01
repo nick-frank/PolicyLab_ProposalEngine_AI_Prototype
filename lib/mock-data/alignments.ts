@@ -5,7 +5,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-001",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-pollution-01",
         title: "Pollution Exclusion",
@@ -41,7 +41,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-002",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-ccc-01",
         title: "Care Custody or Control Exclusion",
@@ -77,7 +77,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-003",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-dtd-01",
         title: "Duty to Defend",
@@ -113,7 +113,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-004",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-ab-01",
         title: "Assault and Battery Exclusion",
@@ -148,7 +148,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-005",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-cyber-ext-01",
         title: "Cyber Extortion Coverage",
@@ -183,7 +183,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-006",
     matchType: "one_to_one",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-hammer-01",
         title: "Consent to Settle Clause",
@@ -221,7 +221,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-007",
     matchType: "one_to_many",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-ai-01",
         title: "Additional Insured — Ongoing Operations",
@@ -266,7 +266,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-008",
     matchType: "one_to_many",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-netsec-01",
         title: "Network Security & Privacy Liability",
@@ -308,7 +308,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-009",
     matchType: "unmatched",
-    markelClauses: [
+    pcCommercialClauses: [
       {
         id: "mcl-epli-3rd-01",
         title: "EPLI — Third-Party Coverage Extension",
@@ -337,7 +337,7 @@ export const ALIGNMENTS: ClauseAlignment[] = [
   {
     id: "al-010",
     matchType: "unmatched",
-    markelClauses: [],
+    pcCommercialClauses: [],
     kinsaleClauses: [
       {
         id: "kcl-reg-01",

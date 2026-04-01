@@ -15,7 +15,7 @@ export const TIGHTNESS_COLORS: Record<
     bg: "bg-green-50",
     text: "text-green-700",
     border: "border-green-200",
-    label: "Markel Broader",
+    label: "P&C Commercial Broader",
   },
   neutral: {
     bg: "bg-zinc-50",
@@ -135,13 +135,13 @@ export const PORTAL_STATUS_CONFIG: Record<
   PortalSubmissionStatus,
   { label: string; bg: string; text: string; border: string }
 > = {
-  received: { label: "Received", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
-  open: { label: "Open", bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200" },
+  preparing_to_uw: { label: "Preparing to UW", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
+  ai_underwriting: { label: "AI Underwriting", bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200" },
+  ready_for_uw_review: { label: "Ready for UW Review", bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200" },
   under_review: { label: "Under Review", bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
   proposal_produced: { label: "Proposal Produced", bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200" },
   bound: { label: "Bound", bg: "bg-green-50", text: "text-green-700", border: "border-green-200" },
   declined: { label: "Declined", bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
-  closed: { label: "Closed", bg: "bg-zinc-50", text: "text-zinc-600", border: "border-zinc-200" },
 };
 
 // ── Extraction status configuration ──────────────────────────────────

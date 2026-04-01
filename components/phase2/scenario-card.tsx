@@ -48,9 +48,9 @@ export function ScenarioCard({ scenario }: { scenario: ClaimVignette }) {
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <div className="space-y-1">
-              <span className="text-muted-foreground">Markel</span>
-              <Badge variant="outline" className={cn("text-xs", outcomeColors[scenario.markelOutcome.outcome])}>
-                {scenario.markelOutcome.outcome.replace("_", " ")}
+              <span className="text-muted-foreground">P&C Commercial</span>
+              <Badge variant="outline" className={cn("text-xs", outcomeColors[scenario.pcCommercialOutcome.outcome])}>
+                {scenario.pcCommercialOutcome.outcome.replace("_", " ")}
               </Badge>
             </div>
             <div className="space-y-1">

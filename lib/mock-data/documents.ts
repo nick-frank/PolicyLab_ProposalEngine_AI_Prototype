@@ -1,11 +1,11 @@
 import type { DocumentAudit } from "@/lib/types";
 
 export const DOCUMENTS: DocumentAudit[] = [
-  // ── Markel Documents ──
+  // ── P&C Commercial Documents ──
   {
-    id: "doc-markel-gl-01",
-    documentName: "Markel GL Policy Form MGL-2024-07",
-    insurer: "Markel",
+    id: "doc-pc-commercial-gl-01",
+    documentName: "P&C Commercial GL Policy Form MGL-2024-07",
+    insurer: "P&C Commercial",
     pageCount: 42,
     ocrConfidence: 0.96,
     chunkCount: 12,
@@ -51,9 +51,9 @@ export const DOCUMENTS: DocumentAudit[] = [
     ],
   },
   {
-    id: "doc-markel-pl-01",
-    documentName: "Markel PL Policy Form MPL-2024-05",
-    insurer: "Markel",
+    id: "doc-pc-commercial-pl-01",
+    documentName: "P&C Commercial PL Policy Form MPL-2024-05",
+    insurer: "P&C Commercial",
     pageCount: 28,
     ocrConfidence: 0.95,
     chunkCount: 8,
@@ -92,9 +92,9 @@ export const DOCUMENTS: DocumentAudit[] = [
     ],
   },
   {
-    id: "doc-markel-cy-01",
-    documentName: "Markel Cyber Policy Form MCY-2024-09",
-    insurer: "Markel",
+    id: "doc-pc-commercial-cy-01",
+    documentName: "P&C Commercial Cyber Policy Form MCY-2024-09",
+    insurer: "P&C Commercial",
     pageCount: 35,
     ocrConfidence: 0.97,
     chunkCount: 10,

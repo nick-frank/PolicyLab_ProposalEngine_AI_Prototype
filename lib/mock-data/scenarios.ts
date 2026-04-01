@@ -7,18 +7,18 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "An HVAC contractor's refrigerant lines ruptured during a hostile fire at a commercial building, releasing R-410A refrigerant that caused respiratory injuries to three firefighters. The fire department filed a claim alleging the contractor's installation created a pollution hazard.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's hostile fire exception to the pollution exclusion applies. The refrigerant release was caused by a hostile fire, bringing it within the carve-back at Section I, 2(f)(1)(d).",
+        "P&C Commercial's hostile fire exception to the pollution exclusion applies. The refrigerant release was caused by a hostile fire, bringing it within the carve-back at Section I, 2(f)(1)(d).",
       triggerClause: {
         fullText:
           "This exclusion does not apply to bodily injury or property damage arising out of heat, smoke or fumes from a hostile fire.",
         highlightStart: 0,
         highlightEnd: 107,
         provenance: {
-          documentId: "doc-markel-gl-01",
-          documentName: "Markel GL Policy Form MGL-2024-07",
+          documentId: "doc-pc-commercial-gl-01",
+          documentName: "P&C Commercial GL Policy Form MGL-2024-07",
           pageNumber: 14,
           clauseId: "CG-00-01-Section-I-2f-exception",
           extractionConfidence: 0.96,
@@ -65,10 +65,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Professional Liability",
     narrative:
       "A custom software firm deployed a database migration tool with a critical bug that corrupted 18 months of client financial records. The client filed a claim for $2.1M in reconstruction costs and lost business revenue. The bug originated from code written three years before the current policy period.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel provides full prior acts coverage when no retroactive date is shown. The wrongful act (defective code) predates the policy period but the claim was first made during the policy period, satisfying the claims-made trigger.",
+        "P&C Commercial provides full prior acts coverage when no retroactive date is shown. The wrongful act (defective code) predates the policy period but the claim was first made during the policy period, satisfying the claims-made trigger.",
     },
     kinsaleOutcome: {
       outcome: "not_covered",
@@ -108,10 +108,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "A patron was severely beaten by another customer in the parking lot of a full-service restaurant. The victim filed suit alleging the restaurant failed to provide adequate lighting, security cameras, or security personnel despite three prior violent incidents at the location.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's assault and battery exclusion applies only to acts committed by or directed by the insured. Third-party patron violence with alleged negligent security falls outside the exclusion scope. The insured's alleged failure to prevent the assault is a covered negligence claim.",
+        "P&C Commercial's assault and battery exclusion applies only to acts committed by or directed by the insured. Third-party patron violence with alleged negligent security falls outside the exclusion scope. The insured's alleged failure to prevent the assault is a covered negligence claim.",
     },
     kinsaleOutcome: {
       outcome: "not_covered",
@@ -151,10 +151,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Cyber Liability",
     narrative:
       "A software publisher's cloud-hosted SaaS platform was encrypted by a ransomware group demanding 15 BTC (approximately $450,000) to restore access. The attack exploited a vulnerability in the AWS-hosted application layer, affecting 200 enterprise customers and causing $1.2M in business interruption losses.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's cyber extortion coverage applies at full policy limits without cryptocurrency restrictions. The network security liability coverage is not limited to systems owned by the insured, so the AWS-hosted platform is covered.",
+        "P&C Commercial's cyber extortion coverage applies at full policy limits without cryptocurrency restrictions. The network security liability coverage is not limited to systems owned by the insured, so the AWS-hosted platform is covered.",
     },
     kinsaleOutcome: {
       outcome: "partial",
@@ -179,18 +179,18 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "A general contractor's subcontractor installed flashing improperly on a commercial building, causing water intrusion that damaged drywall, electrical systems, and flooring throughout three floors. The building owner filed a claim for $800K in repairs after the project was completed.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel retains the subcontractor exception to Exclusion l (Damage to Your Work). Since the defective work was performed by a subcontractor, the exclusion does not apply and the property damage to the overall completed project is covered under products-completed operations.",
+        "P&C Commercial retains the subcontractor exception to Exclusion l (Damage to Your Work). Since the defective work was performed by a subcontractor, the exclusion does not apply and the property damage to the overall completed project is covered under products-completed operations.",
       triggerClause: {
         fullText:
           "This exclusion does not apply if the damaged work or the work out of which the damage arises was performed on your behalf by a subcontractor.",
         highlightStart: 0,
         highlightEnd: 145,
         provenance: {
-          documentId: "doc-markel-gl-01",
-          documentName: "Markel GL Policy Form MGL-2024-07",
+          documentId: "doc-pc-commercial-gl-01",
+          documentName: "P&C Commercial GL Policy Form MGL-2024-07",
           pageNumber: 16,
           clauseId: "CG-00-01-Section-I-2l",
           extractionConfidence: 0.93,
@@ -237,10 +237,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Professional Liability",
     narrative:
       "An investment advisory firm faced an SEC enforcement action alleging unsuitable investment recommendations to elderly clients. Defense costs totaled $420K before a $600K settlement was reached. The firm refused the insurer's initial $350K settlement recommendation.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel provides duty-to-defend with costs outside limits. The full $420K defense costs are paid in addition to the $1M limit. Under the standard hammer clause, Markel's liability is capped at the $350K proposed settlement plus $420K in defense costs.",
+        "P&C Commercial provides duty-to-defend with costs outside limits. The full $420K defense costs are paid in addition to the $1M limit. Under the standard hammer clause, P&C Commercial's liability is capped at the $350K proposed settlement plus $420K in defense costs.",
     },
     kinsaleOutcome: {
       outcome: "partial",
@@ -265,10 +265,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "A janitorial worker accidentally discharged a fire extinguisher in a client's server room, causing $38,000 in damage to network equipment. The client filed a claim for the equipment replacement and two days of business interruption costs.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "not_covered",
       reasoning:
-        "Markel's care, custody, or control exclusion applies. The server equipment was in the insured's care during cleaning operations, and no exception exists for this type of property damage in the Markel form.",
+        "P&C Commercial's care, custody, or control exclusion applies. The server equipment was in the insured's care during cleaning operations, and no exception exists for this type of property damage in the P&C Commercial form.",
     },
     kinsaleOutcome: {
       outcome: "covered",
@@ -308,10 +308,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "EPLI",
     narrative:
       "A server at a full-service restaurant made repeated unwanted sexual comments to a regular customer over several months. The customer filed a lawsuit alleging sexual harassment and hostile environment, naming both the server and the restaurant as defendants.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "not_covered",
       reasoning:
-        "Markel's EPLI form limits coverage to claims by employees and applicants. A customer's harassment claim is a third-party claim and falls outside the scope of the insuring agreement.",
+        "P&C Commercial's EPLI form limits coverage to claims by employees and applicants. A customer's harassment claim is a third-party claim and falls outside the scope of the insuring agreement.",
     },
     kinsaleOutcome: {
       outcome: "covered",
@@ -351,10 +351,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "A plumbing contractor faced three separate completed operations claims totaling $1.8M in a single policy year. The claims involved defective pipe installations in different commercial buildings that each caused water damage after project completion.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's Products-Completed Operations aggregate equals the $2M General Aggregate, providing sufficient capacity to cover all three claims within the policy period.",
+        "P&C Commercial's Products-Completed Operations aggregate equals the $2M General Aggregate, providing sufficient capacity to cover all three claims within the policy period.",
     },
     kinsaleOutcome: {
       outcome: "partial",
@@ -379,10 +379,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "A general contractor relied on an oral agreement with a subcontractor for indemnification. When the subcontractor's work caused a bodily injury claim, the GC tendered the claim under its GL policy's contractual liability coverage, citing the oral indemnification agreement.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's broad insured contract definition covers any contract pertaining to the business, including oral agreements. The oral indemnification agreement qualifies as an insured contract.",
+        "P&C Commercial's broad insured contract definition covers any contract pertaining to the business, including oral agreements. The oral indemnification agreement qualifies as an insured contract.",
     },
     kinsaleOutcome: {
       outcome: "not_covered",
@@ -422,10 +422,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Professional Liability",
     narrative:
       "A physician misdiagnosed a patient's condition, resulting in a delayed cancer diagnosis and subsequent bodily injury claim for $1.5M. The claim was filed against the physician's professional liability policy.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "not_covered",
       reasoning:
-        "Markel's professional liability form explicitly excludes bodily injury claims. The misdiagnosis resulted in physical harm (delayed treatment), which falls within the bodily injury exclusion. The claim would need to be tendered to a separate medical malpractice policy.",
+        "P&C Commercial's professional liability form explicitly excludes bodily injury claims. The misdiagnosis resulted in physical harm (delayed treatment), which falls within the bodily injury exclusion. The claim would need to be tendered to a separate medical malpractice policy.",
     },
     kinsaleOutcome: {
       outcome: "covered",
@@ -465,10 +465,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Cyber Liability",
     narrative:
       "A software publisher suffered a data breach exposing 50,000 EU customer records. The Irish Data Protection Commission initiated an investigation and ultimately imposed a regulatory fine of $800K, with defense costs of $150K incurred during the proceeding.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "not_covered",
       reasoning:
-        "Markel's cyber form excludes all regulatory proceedings, fines, penalties, and associated defense costs. The GDPR investigation and resulting fine are entirely excluded.",
+        "P&C Commercial's cyber form excludes all regulatory proceedings, fines, penalties, and associated defense costs. The GDPR investigation and resulting fine are entirely excluded.",
     },
     kinsaleOutcome: {
       outcome: "covered",
@@ -508,10 +508,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "General Liability",
     narrative:
       "An independent contractor working for a janitorial company fell from a ladder while cleaning exterior windows at a client location. The contractor filed a bodily injury claim alleging the janitorial company failed to provide proper safety equipment and training.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel provides affirmative vicarious liability coverage for independent contractor operations performed within the scope of engagement. The injury occurred during cleaning operations within the contractor's engagement.",
+        "P&C Commercial provides affirmative vicarious liability coverage for independent contractor operations performed within the scope of engagement. The injury occurred during cleaning operations within the contractor's engagement.",
     },
     kinsaleOutcome: {
       outcome: "not_covered",
@@ -551,10 +551,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Property",
     narrative:
       "A fire caused $500K in damage to a restaurant occupying a 1960s-era building. The local building authority required compliance with current fire suppression, ADA, and electrical codes for reconstruction, adding $180K in code-upgrade costs beyond the direct damage repair.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel provides ordinance or law coverage at 25% of building limit. For a $1M building limit, $250K is available for increased cost of construction, which is sufficient to cover the $180K in code-upgrade costs.",
+        "P&C Commercial provides ordinance or law coverage at 25% of building limit. For a $1M building limit, $250K is available for increased cost of construction, which is sufficient to cover the $180K in code-upgrade costs.",
     },
     kinsaleOutcome: {
       outcome: "partial",
@@ -579,10 +579,10 @@ export const SCENARIOS: ClaimVignette[] = [
     coverageType: "Umbrella",
     narrative:
       "A construction company's $1M primary GL limit was exhausted by a $1M settlement. A second occurrence resulted in a $2.5M judgment. The insured tendered the excess to its umbrella carrier seeking drop-down and following-form coverage for the second claim.",
-    markelOutcome: {
+    pcCommercialOutcome: {
       outcome: "covered",
       reasoning:
-        "Markel's umbrella follows form with the underlying GL and provides drop-down coverage when underlying limits are exhausted by payment of covered claims. The second occurrence is covered by the umbrella following the same terms as the underlying GL.",
+        "P&C Commercial's umbrella follows form with the underlying GL and provides drop-down coverage when underlying limits are exhausted by payment of covered claims. The second occurrence is covered by the umbrella following the same terms as the underlying GL.",
     },
     kinsaleOutcome: {
       outcome: "not_covered",

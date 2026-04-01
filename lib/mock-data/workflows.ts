@@ -158,7 +158,7 @@ export const WORKFLOWS: WorkflowDeepDive[] = [
               direction: "tighter",
               severity: "high",
               recommendation:
-                "Monitor for refrigerant-related claims. Markel's hostile fire exception provides competitive advantage for HVAC contractors.",
+                "Monitor for refrigerant-related claims. P&C Commercial's hostile fire exception provides competitive advantage for HVAC contractors.",
             },
             {
               clauseDeltaId: "cd-002",
@@ -180,8 +180,8 @@ export const WORKFLOWS: WorkflowDeepDive[] = [
                 highlightStart: 0,
                 highlightEnd: 95,
                 provenance: {
-                  documentId: "doc-markel-gl-01",
-                  documentName: "Markel GL Policy Form MGL-2024-07",
+                  documentId: "doc-pc-commercial-gl-01",
+                  documentName: "P&C Commercial GL Policy Form MGL-2024-07",
                   pageNumber: 10,
                   extractionConfidence: 0.90,
                   modelVersion: "v2.4.1",
@@ -274,11 +274,11 @@ export const WORKFLOWS: WorkflowDeepDive[] = [
               action:
                 "Highlight pollution exclusion advantage to broker",
               rationale:
-                "Markel's hostile fire exception provides broader coverage than Kinsale for HVAC contractors handling refrigerants. This is a meaningful differentiation point for the broker conversation.",
+                "P&C Commercial's hostile fire exception provides broader coverage than Kinsale for HVAC contractors handling refrigerants. This is a meaningful differentiation point for the broker conversation.",
               citations: [
                 {
-                  documentId: "doc-markel-gl-01",
-                  documentName: "Markel GL Policy Form MGL-2024-07",
+                  documentId: "doc-pc-commercial-gl-01",
+                  documentName: "P&C Commercial GL Policy Form MGL-2024-07",
                   pageNumber: 14,
                   clauseId: "CG-00-01-Section-I-2f",
                   extractionConfidence: 0.96,

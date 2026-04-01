@@ -47,7 +47,7 @@ export default function ScenarioChecksPage() {
       <div>
         <h1 className="text-2xl font-bold">Scenario Checks</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Claim vignette analysis comparing Markel and Kinsale coverage outcomes
+          Claim vignette analysis comparing P&C Commercial and Kinsale coverage outcomes
         </p>
       </div>
 

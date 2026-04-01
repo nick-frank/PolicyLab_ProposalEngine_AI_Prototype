@@ -48,7 +48,7 @@ export default function DocumentAuditDetailPage({
           <h1 className="text-2xl font-bold">{doc.documentName}</h1>
           <Badge
             variant="outline"
-            className={doc.insurer === "Markel" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"}
+            className={doc.insurer === "P&C Commercial" ? "bg-blue-50 text-blue-700" : "bg-purple-50 text-purple-700"}
           >
             {doc.insurer}
           </Badge>

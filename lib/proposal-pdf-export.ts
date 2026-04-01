@@ -16,7 +16,7 @@ const MARGIN_T = 25;
 const MARGIN_B = 20;
 const CONTENT_W = PAGE_W - MARGIN_L - MARGIN_R;
 
-const GOLD = [178, 144, 60] as const; // Markel gold
+const GOLD = [178, 144, 60] as const; // P&C Commercial gold
 const DARK = [33, 33, 33] as const;
 const GRAY = [100, 100, 100] as const;
 const LIGHT_GRAY = [200, 200, 200] as const;
@@ -54,12 +54,12 @@ function shortDate(iso: string): string {
   });
 }
 
-/** Draw the gold "MARKEL" header on every page */
+/** Draw the gold "P&C COMMERCIAL" header on every page */
 function drawHeader(doc: jsPDF) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(24);
   doc.setTextColor(...GOLD);
-  doc.text("MARKEL", MARGIN_L, 15);
+  doc.text("P&C COMMERCIAL", MARGIN_L, 15);
   // thin gold line under header
   doc.setDrawColor(...GOLD);
   doc.setLineWidth(0.5);
@@ -87,7 +87,7 @@ function drawFooter(doc: jsPDF, pageNum: number, totalPages: number) {
     { align: "center" }
   );
   doc.text(
-    "Markel Insurance Company — Evanston, IL",
+    "P&C Commercial Insurance Company — Evanston, IL",
     PAGE_W - MARGIN_R,
     PAGE_H - 10,
     { align: "right" }
@@ -237,11 +237,11 @@ function buildPage1_QuoteSummary(
   y += 5;
 
   y = sectionTitle(doc, y, "Underwriter Contact");
-  y = labelValue(doc, y, "Underwriter:", sub.assignedUnderwriter);
+  y = labelValue(doc, y, "Underwriter:", sub.assignedUnderwriter ?? "Unassigned");
   if (sub.approver) {
     y = labelValue(doc, y, "Approver:", sub.approver);
   }
-  y = labelValue(doc, y, "Company:", "Markel Insurance Company");
+  y = labelValue(doc, y, "Company:", "P&C Commercial Insurance Company");
   y = labelValue(doc, y, "Address:", "Ten Parkway North, Deerfield, IL 60015");
   y += 5;
 
@@ -316,10 +316,10 @@ function buildPage2_BindingConditions(doc: jsPDF, sub: PortalSubmission) {
     "Receipt and acceptance of a currently valued loss run from all carriers for the past five (5) years.",
     "Receipt of signed Binding Authorization from the broker of record.",
     "Premium payment in full is due within 30 days of the effective date.",
-    "All information submitted to Markel must be accurate and complete. Any material misrepresentation may void the policy.",
+    "All information submitted to P&C Commercial must be accurate and complete. Any material misrepresentation may void the policy.",
     "The insured must maintain all safety programs and operations as described in the application.",
-    "Markel reserves the right to conduct a physical inspection of the insured's premises and operations.",
-    "Any changes in operations, exposures, or ownership must be reported to Markel immediately.",
+    "P&C Commercial reserves the right to conduct a physical inspection of the insured's premises and operations.",
+    "Any changes in operations, exposures, or ownership must be reported to P&C Commercial immediately.",
     "This quote is valid for 30 days from the date issued, subject to re-underwriting upon expiration.",
   ];
 
@@ -519,7 +519,7 @@ function buildPage4_Terrorism(
   const disclosure2 = [
     "The United States Department of the Treasury will determine whether an event is a certified act of terrorism. Under TRIA, the federal government will pay 80% of covered terrorism losses exceeding the statutorily established deductible, and the insurer will be responsible for 20%. The federal share applies when total industry insured losses from certified acts of terrorism exceed $200 million in a calendar year.",
     "",
-    "The premium charge for terrorism coverage is determined using the current Markel rate filing for this coverage territory and class of business. Terrorism premium is subject to a minimum premium as noted above.",
+    "The premium charge for terrorism coverage is determined using the current P&C Commercial rate filing for this coverage territory and class of business. Terrorism premium is subject to a minimum premium as noted above.",
   ];
 
   for (const para of disclosure2) {
@@ -730,6 +730,6 @@ export function generateProposalPdf(
   }
 
   // Download
-  const fileName = `Markel_Proposal_${submission.referenceNumber.replace(/\s+/g, "_")}_v${proposal.version}.pdf`;
+  const fileName = `PCC_Proposal_${submission.referenceNumber.replace(/\s+/g, "_")}_v${proposal.version}.pdf`;
   doc.save(fileName);
 }

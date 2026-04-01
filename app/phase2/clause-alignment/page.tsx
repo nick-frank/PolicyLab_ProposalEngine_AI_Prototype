@@ -35,7 +35,7 @@ export default function ClauseAlignmentPage() {
       <div>
         <h1 className="text-2xl font-bold">Clause Alignment</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Mapping between Markel and Kinsale clause structures using retrieval and reranking
+          Mapping between P&C Commercial and Kinsale clause structures using retrieval and reranking
         </p>
       </div>
 

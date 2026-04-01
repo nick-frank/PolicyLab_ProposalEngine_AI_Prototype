@@ -49,11 +49,11 @@ export interface ClauseDelta {
   severity: Severity;
   confidence: number;
   abstained: boolean;
-  markelSpan: EvidenceSpan;
+  pcCommercialSpan: EvidenceSpan;
   kinsaleSpan: EvidenceSpan;
   plainLanguageExplanation: string;
   reasoningSteps: string[];
-  markelProvenance: Provenance;
+  pcCommercialProvenance: Provenance;
   kinsaleProvenance: Provenance;
 }
 
@@ -87,7 +87,7 @@ export interface ClaimVignette {
   title: string;
   coverageType: string;
   narrative: string;
-  markelOutcome: ScenarioOutcome;
+  pcCommercialOutcome: ScenarioOutcome;
   kinsaleOutcome: ScenarioOutcome;
   regressionStatus: RegressionStatus;
   relatedClauseDeltaIds: string[];
@@ -109,11 +109,11 @@ export interface PricingComparison {
   naicsCode: string;
   naicsDescription: string;
   coverageType: string;
-  markelPremium: number;
+  pcCommercialPremium: number;
   kinsalePremium: number;
   premiumDeltaPercent: number;
   tightnessScore: number;
-  outcome: "markel_wins" | "kinsale_wins" | "competitive";
+  outcome: "pc_commercial_wins" | "kinsale_wins" | "competitive";
   termGapOpportunities: TermGapOpportunity[];
 }
 
@@ -122,7 +122,7 @@ export interface PricingComparison {
 export interface ClauseAlignment {
   id: string;
   matchType: MatchType;
-  markelClauses: { id: string; title: string; formNumber: string }[];
+  pcCommercialClauses: { id: string; title: string; formNumber: string }[];
   kinsaleClauses: { id: string; title: string; formNumber: string }[];
   retrievalScore: number;
   rerankScore: number;
@@ -157,7 +157,7 @@ export interface DocumentIssue {
 export interface DocumentAudit {
   id: string;
   documentName: string;
-  insurer: "Markel" | "Kinsale";
+  insurer: "P&C Commercial" | "Kinsale";
   pageCount: number;
   ocrConfidence: number;
   chunkCount: number;
@@ -344,13 +344,13 @@ export interface FilterConfig {
 // ── Submission Portal ───────────────────────────────────────────────
 
 export type PortalSubmissionStatus =
-  | "received"
-  | "open"
+  | "preparing_to_uw"
+  | "ai_underwriting"
+  | "ready_for_uw_review"
   | "under_review"
   | "proposal_produced"
   | "bound"
-  | "declined"
-  | "closed";
+  | "declined";
 
 export type LineOfBusiness =
   | "General Liability"
@@ -374,6 +374,15 @@ export interface StatusTimelineEntry {
   note?: string;
 }
 
+export interface InsuredLocation {
+  address: string;
+  type?: string;
+  description?: string;
+  reportable: boolean;
+  effectiveStart?: string;
+  effectiveEnd?: string;
+}
+
 export interface PortalSubmission {
   id: string;
   referenceNumber: string;
@@ -382,16 +391,23 @@ export interface PortalSubmission {
   lineOfBusiness: LineOfBusiness;
   premiumIndication: number;
   proposalCount: number;
-  assignedUnderwriter: string;
+  assignedUnderwriter?: string;
   approver?: string;
   receivedDate: string;
   lastUpdated: string;
   effectiveDate: string;
   expirationDate: string;
   broker: string;
+  brokerContact?: string;
+  brokerEmail?: string;
+  brokerPhone?: string;
   state: string;
+  primaryAddress?: string;
   naicsCode: string;
   naicsDescription: string;
+  companyUrl?: string;
+  insuredLocations?: InsuredLocation[];
+  submissionSummary?: string;
   timeline: StatusTimelineEntry[];
 }
 
@@ -399,6 +415,8 @@ export interface PortalProposal {
   id: string;
   submissionId: string;
   label: string;
+  description?: string;
+  aiGenerated?: boolean;
   version: number;
   status: "draft" | "pending_approval" | "approved" | "declined";
   totalPremium: number;
@@ -428,6 +446,7 @@ export interface PortalDebitCredit {
 export interface PortalRate {
   id: string;
   submissionId: string;
+  locationAddress?: string;
   classCode: string;
   classDescription: string;
   territory: string;
@@ -450,6 +469,17 @@ export interface PortalLossRun {
   paid: number;
   reserves: number;
   lossRatio: number;
+}
+
+export interface PortalLossDetail {
+  id: string;
+  dateOfLoss: string;
+  groundUpIndemnity: number;
+  groundUpExpense: number;
+  groundUpTotalIncurred: number;
+  indemnityLessDeductible: number;
+  includableLosses: number;
+  policyPeriod: string;
 }
 
 export interface PortalLargeLoss {
@@ -497,6 +527,12 @@ export interface SubmissionFormAdjustment {
   amount: number;
 }
 
+export interface SubmissionFormFillIn {
+  id: string;
+  label: string;
+  value: string;
+}
+
 export interface SubmissionForm {
   id: string;
   formNumber: string;
@@ -506,6 +542,7 @@ export interface SubmissionForm {
   category: string;
   description?: string;
   adjustments?: SubmissionFormAdjustment[];
+  fillIns?: SubmissionFormFillIn[];
 }
 
 export interface PortalStructuredField {
