@@ -29,9 +29,6 @@ User
  │     ├──< LossDetail        (submission_id)
  │     ├──< LargeLoss         (submission_id)
  │     ├──< SubmissionNote    (submission_id)
- │     ├──< SubmissionForm    (submission_id)
- │     │     └──< SubmissionFormAdjustment (submission_form_id)
- │     │     └──< SubmissionFormFillIn     (submission_form_id)
  │     ├──< StatusEvent       (submission_id)
  │     └──< AuditLog          (submission_id)
 ```
@@ -180,27 +177,28 @@ Physical locations associated with the insured. One submission can have many loc
 
 A pricing/coverage option for a submission. Multiple proposals per submission (e.g. Good/Better/Best).
 
-| Column | Type | Constraints | Notes |
-|---|---|---|---|
-| `id` | VARCHAR(36) | PK | |
-| `submission_id` | VARCHAR(36) | FK → `submission.id`, NOT NULL | CASCADE DELETE |
-| `name` | VARCHAR(255) | NOT NULL | e.g. "Good — Essential Coverage" |
-| `description` | TEXT | | |
-| `version` | INTEGER | NOT NULL, DEFAULT 1 | |
-| `status` | ENUM(ProposalStatus) | NOT NULL, DEFAULT `draft` | |
-| `ai_generated` | BOOLEAN | DEFAULT FALSE | Was this AI-created? |
-| `rating_type` | ENUM(RatingType) | | Which rating engine |
-| `line_of_business` | VARCHAR(100) | | |
-| **Premiums** | | | |
-| `total_premium` | DECIMAL(15,2) | | Final premium |
-| `base_premium` | DECIMAL(15,2) | | Before adjustments |
-| `indicated_premium` | DECIMAL(15,2) | | |
-| `technical_premium` | DECIMAL(15,2) | | |
-| `bound_premium` | DECIMAL(15,2) | | If bound |
-| `commission` | DECIMAL(15,2) | | Broker commission |
-| **Data (JSON blobs)** | | | |
-| `output_data` | JSON | | Calculated rates and premiums |
-| `validation_results` | JSON | | |
+| Column                         | Type | Constraints | Notes                            |
+|--------------------------------|---|---|----------------------------------|
+| `id`                           | VARCHAR(36) | PK |                                  |
+| `submission_id`                | VARCHAR(36) | FK → `submission.id`, NOT NULL | CASCADE DELETE                   |
+| `name`                         | VARCHAR(255) | NOT NULL | e.g. "Good — Essential Coverage" |
+| `description`                  | TEXT | |                                  |
+| `version`                      | INTEGER | NOT NULL, DEFAULT 1 |                                  |
+| `status`                       | ENUM(ProposalStatus) | NOT NULL, DEFAULT `draft` |                                  |
+| `ai_generated`                 | BOOLEAN | DEFAULT FALSE | Was this AI-created?             |
+| `AI_risk_analysis_description` | TEXT | | Was this AI-created              |
+| `rating_type`                  | ENUM(RatingType) | | Which rating engine              |
+| `line_of_business`             | VARCHAR(100) | |                                  |
+| **Premiums**                   | | |                                  |
+| `total_premium`                | DECIMAL(15,2) | | Final premium                    |
+| `base_premium`                 | DECIMAL(15,2) | | Before adjustments               |
+| `indicated_premium`            | DECIMAL(15,2) | |                                  |
+| `technical_premium`            | DECIMAL(15,2) | |                                  |
+| `bound_premium`                | DECIMAL(15,2) | | If bound                         |
+| `commission`                   | DECIMAL(15,2) | | Broker commission                |
+| **Data (JSON blobs)**          | | |                                  |
+| `output_data`                  | JSON | | Calculated rates and premiums    |
+| `validation_results`           | JSON | |                                  |
 
 > **Note:** Limits, deductibles, and coverages formerly in `policy_details` JSON are now normalized into `proposal_deductible`, `proposal_coverage`, and `proposal_coverage_limit` tables.
 | **File** | | | |
@@ -346,52 +344,7 @@ Individual limit values within a coverage (e.g. Per Occurrence, General Aggregat
 
 ---
 
-### 9. `submission_form`
-
-Master list of forms associated with a submission (before proposal-level selection).
-
-| Column | Type | Constraints | Notes |
-|---|---|---|---|
-| `id` | VARCHAR(36) | PK | |
-| `submission_id` | VARCHAR(36) | FK → `submission.id`, NOT NULL | CASCADE DELETE |
-| `form_number` | VARCHAR(50) | | |
-| `edition` | VARCHAR(20) | | |
-| `form_name` | VARCHAR(255) | | |
-| `form_type` | ENUM(FormType) | | |
-| `category` | VARCHAR(100) | | |
-| `description` | TEXT | | |
-| `sort_order` | INTEGER | DEFAULT 0 | |
-
----
-
-### 10. `submission_form_adjustment`
-
-Debit/credit adjustments on submission-level forms.
-
-| Column | Type | Constraints | Notes |
-|---|---|---|---|
-| `id` | VARCHAR(36) | PK | |
-| `submission_form_id` | VARCHAR(36) | FK → `submission_form.id`, NOT NULL | CASCADE DELETE |
-| `description` | VARCHAR(255) | NOT NULL | |
-| `type` | ENUM(AdjustmentType) | NOT NULL | |
-| `amount` | DECIMAL(15,2) | NOT NULL | |
-
----
-
-### 11. `submission_form_fill_in`
-
-Fill-in fields on submission-level forms.
-
-| Column | Type | Constraints | Notes |
-|---|---|---|---|
-| `id` | VARCHAR(36) | PK | |
-| `submission_form_id` | VARCHAR(36) | FK → `submission_form.id`, NOT NULL | CASCADE DELETE |
-| `label` | VARCHAR(255) | NOT NULL | |
-| `value` | TEXT | NOT NULL | |
-
----
-
-### 12. `document`
+### 9. `document`
 
 Uploaded files (applications, loss runs, schedules, etc.).
 
@@ -413,7 +366,7 @@ Uploaded files (applications, loss runs, schedules, etc.).
 
 ---
 
-### 13. `structured_field`
+### 10. `structured_field`
 
 AI-extracted data fields from documents, with human override capability.
 
@@ -432,7 +385,7 @@ AI-extracted data fields from documents, with human override capability.
 
 ---
 
-### 14. `loss_run`
+### 11. `loss_run`
 
 Historical loss summary by policy year.
 
@@ -452,7 +405,7 @@ Historical loss summary by policy year.
 
 ---
 
-### 15. `loss_detail`
+### 12. `loss_detail`
 
 Individual loss occurrence records (granular detail beneath loss runs).
 
@@ -470,7 +423,7 @@ Individual loss occurrence records (granular detail beneath loss runs).
 
 ---
 
-### 16. `large_loss`
+### 13. `large_loss`
 
 Individually significant claims flagged for underwriting attention.
 
@@ -485,7 +438,7 @@ Individually significant claims flagged for underwriting attention.
 
 ---
 
-### 17. `submission_note`
+### 14. `submission_note`
 
 Notes and emails on a submission.
 
@@ -505,7 +458,7 @@ Notes and emails on a submission.
 
 ---
 
-### 18. `proposal_note`
+### 15. `proposal_note`
 
 Notes on a specific proposal.
 
@@ -521,7 +474,7 @@ Notes on a specific proposal.
 
 ---
 
-### 19. `submission_subjectivity`
+### 16. `submission_subjectivity`
 
 Conditions/requirements that must be met before or after binding. Tracked at the submission level so they apply across all proposals.
 
@@ -537,7 +490,7 @@ Conditions/requirements that must be met before or after binding. Tracked at the
 
 ---
 
-### 20. `status_event`
+### 17. `status_event`
 
 Audit trail of submission status transitions (powers the timeline UI).
 
@@ -557,7 +510,7 @@ Audit trail of submission status transitions (powers the timeline UI).
 
 ---
 
-### 21. `approval`
+### 18. `approval`
 
 Workflow approval decisions on proposals.
 
@@ -576,7 +529,7 @@ Workflow approval decisions on proposals.
 
 ---
 
-### 22. `audit_log`
+### 19. `audit_log`
 
 General-purpose event log for all data changes.
 
@@ -607,7 +560,6 @@ General-purpose event log for all data changes.
 | `submission` | `loss_detail` | `submission_id` | 1:N | CASCADE |
 | `submission` | `large_loss` | `submission_id` | 1:N | CASCADE |
 | `submission` | `submission_note` | `submission_id` | 1:N | CASCADE |
-| `submission` | `submission_form` | `submission_id` | 1:N | CASCADE |
 | `submission` | `status_event` | `submission_id` | 1:N | CASCADE |
 | `proposal` | `proposal_rate` | `proposal_id` | 1:N | CASCADE |
 | `proposal` | `proposal_deductible` | `proposal_id` | 1:N | CASCADE |
@@ -619,8 +571,6 @@ General-purpose event log for all data changes.
 | `proposal` | `approval` | `proposal_id` | 1:N | SET NULL |
 | `proposal_form` | `proposal_form_adjustment` | `proposal_form_id` | 1:N | CASCADE |
 | `proposal_form` | `proposal_form_fill_in` | `proposal_form_id` | 1:N | CASCADE |
-| `submission_form` | `submission_form_adjustment` | `submission_form_id` | 1:N | CASCADE |
-| `submission_form` | `submission_form_fill_in` | `submission_form_id` | 1:N | CASCADE |
 | `document` | `structured_field` | `document_id` | 1:N | SET NULL |
 | `user` | `user_group` | `user_id` | 1:N | CASCADE |
 | `user` | `submission` | `underwriter_id` | 1:N | SET NULL |
@@ -643,9 +593,6 @@ The existing backend (`backend/core/models.py`) already has many of these tables
 | `large_loss` | Frontend `PortalLargeLoss` has no backend equivalent |
 | `proposal_form_adjustment` | Frontend `SubmissionFormAdjustment` / `PortalDebitCredit` — backend `ProposalForm` only has a single `premium_adjustment` float |
 | `proposal_form_fill_in` | Frontend `SubmissionFormFillIn` — no backend equivalent |
-| `submission_form` | Submission-level forms (distinct from proposal-level) — no backend equivalent |
-| `submission_form_adjustment` | Adjustments on submission-level forms |
-| `submission_form_fill_in` | Fill-ins on submission-level forms |
 | `proposal_deductible` | Deductible options per proposal — formerly buried in `policy_details` JSON blob |
 | `proposal_coverage` | Coverage lines per proposal — formerly buried in `policy_details` JSON blob |
 | `proposal_coverage_limit` | Individual limits within a coverage (e.g. Per Occurrence, Aggregate) |
@@ -706,7 +653,6 @@ The existing backend (`backend/core/models.py`) already has many of these tables
 | Overview → Timeline | `status_event` |
 | Overview → Summary | `submission.submission_summary` |
 | Overview → Notes | `submission_note` |
-| Forms | `submission_form` + `submission_form_adjustment` + `submission_form_fill_in` |
 | Notes & Emails | `submission_note` |
 | Loss Runs | `loss_run`, `large_loss` |
 | Structured Data | `structured_field` |
